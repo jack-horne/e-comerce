@@ -26,6 +26,203 @@ body {
 }
 
 /* =============================================
+   NAVBAR STYLING
+   ============================================= */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.navbar-search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 300px;
+}
+
+.navbar-search .input-group {
+    max-width: 100%;
+}
+
+.navbar-search .form-control {
+    border-radius: 6px 0 0 6px;
+    padding: 10px 15px;
+}
+
+.navbar-search .btn {
+    border-radius: 0 6px 6px 0;
+    padding: 10px 15px;
+}
+
+.navbar .dropdown-menu {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar .dropdown-item {
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+    padding-left: 25px;
+}
+
+.navbar .dropdown-item.text-danger:hover {
+    background-color: #ffe5e5;
+    color: #dc3545 !important;
+}
+
+.navbar .dropdown-item i {
+    width: 20px;
+}
+
+.navbar .dropdown-header {
+    padding: 10px 20px;
+    font-weight: 600;
+}
+
+/* User Avatar in Navbar */
+.navbar-nav .dropdown-toggle img {
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .dropdown-toggle:hover img {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+/* Badge in Navbar */
+.navbar-nav .badge {
+    font-size: 11px;
+    padding: 3px 6px;
+    margin-left: 5px;
+}
+
+/* =============================================
+   RESPONSIVE NAVBAR
+   ============================================= */
+@media (max-width: 992px) {
+    .navbar-search {
+        position: static;
+        transform: none;
+        max-width: 100%;
+        margin: 10px 0;
+        width: auto;
+    }
+
+    .navbar-search .form-control {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-search {
+        margin: 10px 0;
+    }
+
+    .navbar-search .form-control,
+    .navbar-search .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .navbar-nav .dropdown-toggle img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* =============================================
+   PROMO BANNER STYLING
+   ============================================= */
+.promo-banner {
+    background: linear-gradient(135deg, #d64aff 0%, #c933ff 100%);
+    padding: 40px 0;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.promo-banner .container {
+    display: flex;
+    align-items: center;
+}
+
+.banner-title {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.banner-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.btn-promo {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-promo:hover {
+    background-color: white;
+    color: #d64aff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.banner-illustration {
+    max-width: 100%;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =============================================
    PRODUCT CARD STYLING
    ============================================= */
 .product-card {
@@ -203,6 +400,14 @@ body {
     .product-image-container {
         height: 220px;
     }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+    .banner-subtitle {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -235,6 +440,37 @@ body {
     .btn-beli {
         padding: 10px 20px;
         font-size: 14px;
+    }
+
+    /* Navbar adjustments */
+    .navbar-nav .dropdown-toggle img {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Banner adjustments */
+    .promo-banner {
+        padding: 30px 0;
+        margin: 15px 0;
+    }
+
+    .banner-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .banner-subtitle {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .btn-promo {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+
+    .promo-banner .col-md-6:last-child {
+        margin-top: 20px;
     }
 }
 
@@ -274,6 +510,42 @@ body {
     .btn-beli {
         padding: 8px 16px;
         font-size: 13px;
+    }
+
+    /* Navbar adjustments for mobile */
+    .navbar-nav .dropdown-toggle img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Banner adjustments for small mobile */
+    .promo-banner {
+        padding: 25px 0;
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+
+    .promo-banner .row {
+        margin: 0;
+    }
+
+    .banner-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .banner-subtitle {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .btn-promo {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+
+    .promo-banner .col-md-6:last-child {
+        display: none;
     }
 }
 
