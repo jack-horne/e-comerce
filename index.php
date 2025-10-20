@@ -10,48 +10,56 @@
 </head>
 <body>
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-        <div class="container-fluid px-4">
-            <!-- Logo & Brand (Kiri) -->
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
-                <img src="public/image/logo.png" alt="Logo" width="35" height="35" class="me-2">
-                MyWebsite
-            </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+  <div class="container-fluid px-4">
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
+      <img src="public/image/logo.png" alt="Logo" width="35" height="35" class="me-2">
+      Pixel Part
+    </a>
 
-            <!-- Search Bar (Tengah) -->
-            <form class="navbar-search" role="search">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <!-- Menu (Kanan) -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" href="./view/login.php">Login</a>
-                    </li>
-                    <li class="nav-item d-none d-lg-block">
-                        <a class="nav-link" href="./view/register.php">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link position-relative" href="./view/chart.php">
-                            <i class="fas fa-shopping-cart"></i> Keranjang
-                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+
+    
+      <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
+        <div class="input-group w-75 w-lg-50">
+          <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
+          <button class="btn btn-light border-0" type="submit">
+            <i class="fas fa-search text-primary"></i>
+          </button>
         </div>
-    </nav>
+      </form>
+
+      
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link text-white fw-semibold" href="index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fw-semibold" href="./view/login.php">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fw-semibold" href="./view/register.php">Register</a>
+        </li>
+        <li class="nav-item position-relative">
+          <a class="nav-link text-white fw-semibold" href="./view/chart.php">
+            <i class="fas fa-shopping-cart"></i> Keranjang
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
     <!-- Navbar End -->
 
     
@@ -92,7 +100,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="public/image/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg" alt="RTX 5090">
+                            <img src="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg" alt="RTX 5090">
                         </div>
                         <div class="product-info">
                             <div class="product-discount">-15%</div>
@@ -102,6 +110,8 @@
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 14.000.000</p>
                             <button class="btn-beli">Beli</button>
+                        <br>
+                            <button class="btn-beli">Keranjang</button>
                         </div>
                     </div>
                 </div>
@@ -120,6 +130,8 @@
                             <div class="stock-badge low-stock">⚠ Terbatas</div>
                             <p class="product-price">Rp 8.500.000</p>
                             <button class="btn-beli">Beli</button>
+                            <br>
+                            <button class="btn-beli">Keranjang</button>
                         </div>
                     </div>
                 </div>
