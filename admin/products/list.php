@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+//hapus stringnya jika sudah pny akun admin 
+
 // Cek login admin
 //if (!isset($_SESSION['admin_id'])) {
 //header("Location: ../../index.php");
