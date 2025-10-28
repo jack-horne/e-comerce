@@ -43,13 +43,13 @@
           <a class="nav-link text-white fw-semibold" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white fw-semibold" href="./view/login.php">Login</a>
+          <a class="nav-link text-white fw-semibold" href="view/login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white fw-semibold" href="./view/register.php">Register</a>
+          <a class="nav-link text-white fw-semibold" href="view/register.php">Register</a>
         </li>
         <li class="nav-item position-relative">
-          <a class="nav-link text-white fw-semibold" href="./view/chart.php">
+          <a class="nav-link text-white fw-semibold" href="view/template/chart.php">
             <i class="fas fa-shopping-cart"></i> Keranjang
             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
           </a>
@@ -62,7 +62,6 @@
 
     <!-- Navbar End -->
 
-    
 
         <!-- Floating Elements -->
         <div class="hero-floating-shapes">
@@ -74,26 +73,20 @@
     <!-- Hero Section End -->
 
     <!-- Promo Banner Start -->
-    <div class="promo-banner">
-        <div class="container-fluid px-4">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <h2 class="banner-title">Malas belanja ke mal?</h2>
-                    <p class="banner-subtitle">Coba Official Store, jaminan pasti ori!</p>
-                    <a href="#" class="btn btn-promo">Cek Sekarang</a>
-                </div>
-                <div class="col-lg-6 text-center d-none d-lg-block">
-                    <img src="public/image/banner-illustration.png" alt="Banner Illustration" class="banner-illustration" style="max-width: 400px; width: 100%; height: auto;">
-                </div>
-            </div>
-        </div>
+    <div class="promo-section container my-5">
+   <div class="row g-3">
+    
+    <div class="col-lg-8 col-md-12">
+      <div class="promo-banner-big">
+        <img src="public/image/icons/promoBanerRtx30Series.jpg" alt="Promo Starlink" class="img-fluid rounded-4">
+      </div>
     </div>
     <!-- Promo Banner End -->
 
     <!-- Products Section Start -->
     <div class="products-container" id="produk">
         <div class="container-fluid px-4">
-            <h2 class="section-title">Produk Terlaris</h2>
+            <h2 class="section-title">Flash Sale</h2>
 
             <div class="row g-4">
                 <!-- Product Card 1 -->
@@ -109,9 +102,9 @@
                             <div class="product-rating"><i class="fas fa-star"></i> 4.8 (128)</div>
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 14.000.000</p>
-                            <button class="btn-beli">Beli</button>
-                        <br>
-                            <button class="btn-beli">Keranjang</button>
+                            <button class="btn-beli flex-fill me-2">Beli</button>
+                            <button class="btn-beli flex-fill">Keranjang</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -124,14 +117,13 @@
                         </div>
                         <div class="product-info">
                             <div class="product-discount">-20%</div>
-                            <h5 class="product-title">Nama Produk Elektronik Premium</h5>
-                            <p class="product-subtitle">Spesifikasi Produk</p>
-                            <div class="product-rating"><i class="fas fa-star"></i> 4.5 (95)</div>
-                            <div class="stock-badge low-stock">⚠ Terbatas</div>
-                            <p class="product-price">Rp 8.500.000</p>
-                            <button class="btn-beli">Beli</button>
-                            <br>
-                            <button class="btn-beli">Keranjang</button>
+                                <h5 class="product-title">Nama Produk Elektronik Premium</h5>
+                                <p class="product-subtitle">Spesifikasi Produk</p>
+                                <div class="product-rating"><i class="fas fa-star"></i> 4.5 (95)</div>
+                                <div class="stock-badge low-stock">⚠ Terbatas</div>
+                                <p class="product-price">Rp 8.500.000</p>                           
+                                <button class="btn-beli flex-fill me-2">Beli</button>
+                                <button class="btn-beli flex-fill">Keranjang</button>
                         </div>
                     </div>
                 </div>
@@ -142,13 +134,16 @@
                         <div class="product-image-container">
                             <img src="public/image/produk3.jpg" alt="Produk">
                         </div>
-                        <div class="product-info">
+                      <div class="product-info">
+                        <div class="product-discount">-8%</div>
                             <h5 class="product-title">Produk Terbaru Elektronik</h5>
                             <p class="product-subtitle">Deskripsi Singkat</p>
                             <div class="product-rating"><i class="fas fa-star"></i> 5.0 (256)</div>
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 5.000.000</p>
-                            <button class="btn-beli">Beli</button>
+                            <button class="btn-beli flex-fill me-2">Beli</button>
+                            <button class="btn-beli flex-fill">Keranjang</button>
+
                         </div>
                     </div>
                 </div>
@@ -167,6 +162,8 @@
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 3.500.000</p>
                             <button class="btn-beli">Beli</button>
+                             <br>
+                            <button class="btn-beli">Keranjang</button>
                         </div>
                     </div>
                 </div>
@@ -174,6 +171,71 @@
         </div>
     </div>
     <!-- Products Section End -->
+
+    <!-- Kategori sections-->
+    <div class="products-container" id="produk">
+        <div class="container-fluid px-4">
+            <h2 class="section-title">Kategori Produk</h2>
+
+        <section class="product-category container my-5">
+        <div class="row justify-content-center g-4 text-center">
+
+            <!-- Item 1 -->
+            <div class="container text-center mt-4">
+                <div class="row justify-content-center g-4">
+                <div class="col-6 col-md-3">
+                <img src="public/image/icons/prosesor.jpeg" alt="Prosesor" 
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p class="fw-semibold mt-2">Prosesor</p>
+                </div>
+
+
+            <!-- Item 2 -->
+            <div class="col-6 col-md-3">
+                <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p class="fw-semibold mt-2"> </p>Motherboard</p>
+            </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-6 col-md-3">
+               <img src="public/image/icons/psu.jpeg" alt=""
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p>Power Supply unit</p>
+            </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/ram.jpeg" alt="Smartwatch">
+                <p>Smartwatch</p>
+            </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/storage.jpeg" alt="Printer & Scanner">
+                <p>Printer & Scanner</p>
+            </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/vga.jpeg" alt="Accessories">
+                <p>Accessories</p>
+            </div>
+            </div>
+
+        </div>
+        </section>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
