@@ -59,8 +59,7 @@
     </div>
   </div>
 </nav>
-
-    <!-- Navbar End -->
+<!-- Navbar End -->
 
     
 
@@ -94,8 +93,8 @@
     <div class="products-container" id="produk">
         <div class="container-fluid px-4">
             <h2 class="section-title">Produk Terlaris</h2>
-
-            <div class="row g-4">
+            
+         <div class="row g-4">
                 <!-- Product Card 1 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="product-card">
