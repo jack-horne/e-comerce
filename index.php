@@ -69,19 +69,54 @@
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
         </div>
-    </section>
-    <!-- Hero Section End -->
+    </nav>
 
-    <!-- Promo Banner Start -->
-    <div class="promo-section container my-5">
-   <div class="row g-3">
-    
-    <div class="col-lg-8 col-md-12">
-      <div class="promo-banner-big">
-        <img src="public/image/icons/promoBanerRtx30Series.jpg" alt="Promo Starlink" class="img-fluid rounded-4">
-      </div>
-    </div>
-    <!-- Promo Banner End -->
+    <!-- Promo Banner Section -->
+    <section class="promo-banner">
+        <div class="container-fluid px-4">
+            <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="public/image/banner/banner1.jpg" class="d-block w-100" alt="Promo 1">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Diskon Hingga 50%</h5>
+                        <p>Untuk Semua Komponen PC Gaming Terbaru</p>
+                        <a href="#produk" class="btn btn-primary">Belanja Sekarang</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="public/image/banner/banner2.jpg" class="d-block w-100" alt="Promo 2">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Garansi Resmi 2 Tahun</h5>
+                        <p>Semua Produk Elektronik Berkualitas</p>
+                        <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="public/image/banner/banner3.jpg" class="d-block w-100" alt="Promo 3">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Pengiriman Gratis</h5>
+                        <p>Untuk Pembelian Minimal Rp 1.000.000</p>
+                        <a href="#produk" class="btn btn-primary">Order Sekarang</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+        </div>
+    </section>
 
     <!-- Products Section Start -->
     <div class="products-container" id="produk">
@@ -102,9 +137,10 @@
                             <div class="product-rating"><i class="fas fa-star"></i> 4.8 (128)</div>
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 14.000.000</p>
-                            <button class="btn-beli flex-fill me-2">Beli</button>
-                            <button class="btn-beli flex-fill">Keranjang</button>
-                           
+                            <div class="d-flex gap-2">
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,14 +152,15 @@
                             <img src="public/image/produk2.jpg" alt="Produk">
                         </div>
                         <div class="product-info">
-                            <div class="product-discount">-20%</div>
-                                <h5 class="product-title">Nama Produk Elektronik Premium</h5>
-                                <p class="product-subtitle">Spesifikasi Produk</p>
-                                <div class="product-rating"><i class="fas fa-star"></i> 4.5 (95)</div>
-                                <div class="stock-badge low-stock">⚠ Terbatas</div>
-                                <p class="product-price">Rp 8.500.000</p>                           
-                                <button class="btn-beli flex-fill me-2">Beli</button>
-                                <button class="btn-beli flex-fill">Keranjang</button>
+                            <h5 class="product-title">Nama Produk Elektronik Premium</h5>
+                            <p class="product-subtitle">Spesifikasi Produk</p>
+                            <div class="product-rating"><i class="fas fa-star"></i> 4.5 (95)</div>
+                            <div class="stock-badge low-stock">⚠ Terbatas</div>
+                            <p class="product-price">Rp 8.500.000</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,9 +178,10 @@
                             <div class="product-rating"><i class="fas fa-star"></i> 5.0 (256)</div>
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 5.000.000</p>
-                            <button class="btn-beli flex-fill me-2">Beli</button>
-                            <button class="btn-beli flex-fill">Keranjang</button>
-
+                            <div class="d-flex gap-2">
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,9 +199,10 @@
                             <div class="product-rating"><i class="fas fa-star"></i> 4.7 (142)</div>
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 3.500.000</p>
-                            <button class="btn-beli">Beli</button>
-                             <br>
-                            <button class="btn-beli">Keranjang</button>
+                            <div class="d-flex gap-2">
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,62 +217,67 @@
             <h2 class="section-title">Kategori Produk</h2>
 
         <section class="product-category container my-5">
-        <div class="row justify-content-center g-4 text-center">
-
-            <!-- Item 1 -->
-            <div class="container text-center mt-4">
-                <div class="row justify-content-center g-4">
-                <div class="col-6 col-md-3">
-                <img src="public/image/icons/prosesor.jpeg" alt="Prosesor" 
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p class="fw-semibold mt-2">Prosesor</p>
+            <div class="row justify-content-center g-4 text-center align-items-center">
+                <!-- Item 1 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=1" class="text-decoration-none text-center">
+                        <img src="public/image/icons/prosesor.jpeg" alt="Prosesor"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Prosesor</p>
+                    </a>
                 </div>
 
+                <!-- Item 2 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=2" class="text-decoration-none text-center">
+                        <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Motherboard</p>
+                    </a>
+                </div>
 
-            <!-- Item 2 -->
-            <div class="col-6 col-md-3">
-                <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p class="fw-semibold mt-2"> </p>Motherboard</p>
-            </div>
-            </div>
+                <!-- Item 3 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=3" class="text-decoration-none text-center">
+                        <img src="public/image/icons/psu.jpeg" alt="Power Supply Unit"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Power Supply Unit</p>
+                    </a>
+                </div>
 
-            <!-- Item 3 -->
-            <div class="col-6 col-md-3">
-               <img src="public/image/icons/psu.jpeg" alt=""
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p>Power Supply unit</p>
-            </div>
-            </div>
+                <!-- Item 4 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=4" class="text-decoration-none text-center">
+                        <img src="public/image/icons/ram.jpeg" alt="RAM"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">RAM</p>
+                    </a>
+                </div>
 
-            <!-- Item 4 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/ram.jpeg" alt="Smartwatch">
-                <p>Smartwatch</p>
-            </div>
-            </div>
+                <!-- Item 5 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=5" class="text-decoration-none text-center">
+                        <img src="public/image/icons/storage.jpeg" alt="Storage"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Storage</p>
+                    </a>
+                </div>
 
-            <!-- Item 5 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/storage.jpeg" alt="Printer & Scanner">
-                <p>Printer & Scanner</p>
+                <!-- Item 6 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=6" class="text-decoration-none text-center">
+                        <img src="public/image/icons/vga.jpeg" alt="VGA"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">VGA</p>
+                    </a>
+                </div>
             </div>
-            </div>
-
-            <!-- Item 6 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/vga.jpeg" alt="Accessories">
-                <p>Accessories</p>
-            </div>
-            </div>
-
-        </div>
         </section>
 
 
@@ -264,5 +308,17 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/banner.js"></script>
+    <script>
+        // Configure carousel to auto-slide every 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('promoCarousel');
+            const carouselInstance = new bootstrap.Carousel(carousel, {
+                interval: 5000, // 5 seconds
+                ride: 'carousel'
+            });
+        });
+    </script>
+    
 </body>
 </html>
