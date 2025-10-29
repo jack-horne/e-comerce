@@ -1,0 +1,311 @@
+/* =============================================
+   BANNER CAROUSEL STYLING
+   ============================================= */
+
+.banner-section {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+/* Main Banner Carousel */
+.carousel {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner {
+    border-radius: 12px;
+}
+
+.carousel-item {
+    height: 400px;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Carousel Caption */
+.carousel-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    text-align: left;
+}
+
+.carousel-caption h5 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+    font-size: 16px;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(13, 110, 253, 0.8);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    margin-bottom: 15px;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    width: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Side Banners */
+.side-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 193px;
+}
+
+.side-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.side-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.side-banner:hover img {
+    transform: scale(1.05);
+}
+
+.side-banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+    padding: 20px;
+    color: white;
+}
+
+.side-banner-overlay h6 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.side-banner-overlay p {
+    font-size: 14px;
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+/* =============================================
+   RESPONSIVE - TABLET
+   ============================================= */
+@media (max-width: 992px) {
+    .carousel-item {
+        height: 300px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 22px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+
+    .side-banner {
+        height: 145px;
+        margin-bottom: 0;
+    }
+
+    .side-banner-overlay h6 {
+        font-size: 16px;
+    }
+
+    .side-banner-overlay p {
+        font-size: 12px;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - MOBILE
+   ============================================= */
+@media (max-width: 768px) {
+    .banner-section {
+        padding: 15px 0;
+    }
+
+    .carousel-item {
+        height: 250px;
+    }
+
+    .carousel-caption {
+        padding: 20px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .carousel-caption p {
+        font-size: 12px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-control-prev {
+        left: 10px;
+    }
+
+    .carousel-control-next {
+        right: 10px;
+    }
+
+    .side-banner {
+        height: 150px;
+    }
+
+    .side-banner-overlay {
+        padding: 15px;
+    }
+
+    .side-banner-overlay h6 {
+        font-size: 14px;
+    }
+
+    .side-banner-overlay p {
+        font-size: 11px;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - SMALL MOBILE
+   ============================================= */
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 200px;
+    }
+
+    .carousel-caption {
+        padding: 15px;
+    }
+
+    .carousel-caption h5 {
+        font-size: 16px;
+    }
+
+    .carousel-caption p {
+        font-size: 11px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 8px;
+        height: 8px;
+    }
+
+    .carousel-indicators .active {
+        width: 20px;
+    }
+
+    .side-banner {
+        height: 120px;
+    }
+
+    .side-banner-overlay {
+        padding: 12px;
+    }
+
+    .side-banner-overlay h6 {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+
+    .side-banner-overlay p {
+        font-size: 10px;
+    }
+}
+
+/* =============================================
+   LOADING STATE
+   ============================================= */
+.carousel-item.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
