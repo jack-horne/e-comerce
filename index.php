@@ -51,90 +51,6 @@
                 </ul>
             </div>
         </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!-- Banner Carousel Section Start -->
-    <section class="banner-section">
-        <div class="container-fluid px-4 py-4">
-            <div class="row g-3">
-                <!-- Main Banner Carousel (Kiri - Besar) -->
-                <div class="col-lg-8">
-                    <div id="mainBannerCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#mainBannerCarousel" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#mainBannerCarousel" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#mainBannerCarousel" data-bs-slide-to="2"></button>
-                        </div>
-                        
-                        <div class="carousel-inner">
-                            <!-- Slide 1 -->
-                            <div class="carousel-item active">
-                                <img src="public/image/banners/banner1.jpg" class="d-block w-100" alt="Promo 1">
-                                <div class="carousel-caption">
-                                    <h5>PRE ORDER</h5>
-                                    <p>ROG XBOX ALLY X - Periode 25-31 Oktober 2025</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Slide 2 -->
-                            <div class="carousel-item">
-                                <img src="public/image/banners/banner2.jpg" class="d-block w-100" alt="Promo 2">
-                                <div class="carousel-caption">
-                                    <h5>FLASH SALE</h5>
-                                    <p>Diskon hingga 50% untuk produk pilihan</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Slide 3 -->
-                            <div class="carousel-item">
-                                <img src="public/image/banners/banner3.jpg" class="d-block w-100" alt="Promo 3">
-                                <div class="carousel-caption">
-                                    <h5>NEW ARRIVAL</h5>
-                                    <p>RTX 5090 Series - Performa Maksimal</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button class="carousel-control-prev" type="button" data-bs-target="#mainBannerCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#mainBannerCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Side Banners (Kanan - Kecil) -->
-                <div class="col-lg-4">
-                    <div class="row g-3">
-                        <!-- Small Banner 1 -->
-                        <div class="col-12">
-                            <div class="side-banner">
-                                <img src="public/image/banners/side-banner1.jpg" class="img-fluid rounded" alt="Side Banner 1">
-                                <div class="side-banner-overlay">
-                                    <h6>Intel Inside</h6>
-                                    <p>Reliable Performance on the go</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Small Banner 2 -->
-                        <div class="col-12">
-                            <div class="side-banner">
-                                <img src="public/image/banners/side-banner2.jpg" class="img-fluid rounded" alt="Side Banner 2">
-                                <div class="side-banner-overlay">
-                                    <h6>Cicilan 0%</h6>
-                                    <p>Diskon 4% hingga 2JT</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Banner Carousel Section End -->
 
 
     <!-- Products Section Start -->
@@ -159,10 +75,7 @@
                                 <button class="btn-beli flex-fill">Beli</button>
                                 <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
+                    
                 <!-- Product Card 2 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="product-card">
@@ -189,7 +102,8 @@
                         <div class="product-image-container">
                             <img src="public/image/produk3.jpg" alt="Produk">
                         </div>
-                        <div class="product-info">
+                      <div class="product-info">
+                        <div class="product-discount">-8%</div>
                             <h5 class="product-title">Produk Terbaru Elektronik</h5>
                             <p class="product-subtitle">Deskripsi Singkat</p>
                             <div class="product-rating"><i class="fas fa-star"></i> 5.0 (256)</div>
@@ -226,6 +140,71 @@
         </div>
     </div>
     <!-- Products Section End -->
+
+    <!-- Kategori sections-->
+    <div class="products-container" id="produk">
+        <div class="container-fluid px-4">
+            <h2 class="section-title">Kategori Produk</h2>
+
+        <section class="product-category container my-5">
+        <div class="row justify-content-center g-4 text-center">
+
+            <!-- Item 1 -->
+            <div class="container text-center mt-4">
+                <div class="row justify-content-center g-4">
+                <div class="col-6 col-md-3">
+                <img src="public/image/icons/prosesor.jpeg" alt="Prosesor" 
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p class="fw-semibold mt-2">Prosesor</p>
+                </div>
+
+
+            <!-- Item 2 -->
+            <div class="col-6 col-md-3">
+                <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p class="fw-semibold mt-2"> </p>Motherboard</p>
+            </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-6 col-md-3">
+               <img src="public/image/icons/psu.jpeg" alt=""
+                    class="img-fluid rounded-circle shadow-sm border" 
+                    style="width: 120px; height: 120px; object-fit: cover;">
+                <p>Power Supply unit</p>
+            </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/ram.jpeg" alt="Smartwatch">
+                <p>Smartwatch</p>
+            </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/storage.jpeg" alt="Printer & Scanner">
+                <p>Printer & Scanner</p>
+            </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="col-6 col-sm-4 col-md-2">
+            <div class="category-item">
+                <img src="public/image/icons/vga.jpeg" alt="Accessories">
+                <p>Accessories</p>
+            </div>
+            </div>
+
+        </div>
+        </section>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
