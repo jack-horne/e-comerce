@@ -6,6 +6,7 @@
   <title>Keranjang Belanja</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     body {
@@ -103,6 +104,48 @@
   </style>
 </head>
 <body>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
+          <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
+          Pixel Part
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
+            <div class="input-group w-75 w-lg-50">
+              <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
+              <button class="btn btn-light border-0" type="submit">
+                <i class="fas fa-search text-primary"></i>
+              </button>
+            </div>
+          </form>
+
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="../index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
+            </li>
+            <li class="nav-item position-relative">
+              <a class="nav-link text-white fw-semibold" href="chart.php">
+                <i class="fas fa-shopping-cart"></i> Keranjang
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-badge">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 <div class="container mt-4">
   <h3 class="mb-4 text-primary">🛒 Keranjang Belanja</h3>
@@ -119,81 +162,8 @@
         <th>Aksi</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><input type="checkbox" class="check-item"></td>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="/e_commerce2/public/image/product/ASRock Radeon RX 6500 XT 4GB DDR6 - Phantom Gaming D 4G OC.png" alt="VGA" width="100">
-            <div class="ms-3">
-              <div>ASRock Radeon RX 6500 XT 4GB DDR6 - Phantom Gaming D 4G OC</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="price">Rp45.140</div>
-          <div class="old-price">Rp62.000 (27%)</div>
-        </td>
-        <td>
-          <div class="input-group input-group-sm" style="width: 120px;">
-            <button class="btn btn-minus">-</button>
-            <input type="text" class="form-control text-center qty" value="1">
-            <button class="btn btn-plus">+</button>
-          </div>
-        </td>
-        <td class="total-price">Rp45.140</td>
-        <td><button class="btn btn-outline-danger btn-sm">🗑 Hapus</button></td>
-      </tr>
-
-      <tr>
-        <td><input type="checkbox" class="check-item"></td>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="/e_commerce2/public/image/product/ASRock Radeon RX 7800 XT 16GB GDDR6 - Challenger 16G OC.png" alt="VGA" width="100">
-            <div class="ms-3">
-              <div>ASRock Radeon RX 7800 XT 16GB GDDR6 - Challenger 16G OC</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="price">Rp1.425.000</div>
-          <div class="old-price">Rp1.500.000 (5%)</div>
-        </td>
-        <td>
-          <div class="input-group input-group-sm" style="width: 120px;">
-            <button class="btn btn-minus">-</button>
-            <input type="text" class="form-control text-center qty" value="1">
-            <button class="btn btn-plus">+</button>
-          </div>
-        </td>
-        <td class="total-price">Rp1.425.000</td>
-        <td><button class="btn btn-outline-danger btn-sm">🗑 Hapus</button></td>
-      </tr>
-
-      <tr>
-        <td><input type="checkbox" class="check-item"></td>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="/e_commerce2/public/image/product/Intel Core Ultra 5 225 3.3GHz Up To 4.9GHz - Cache 20MB [Box] Socket LGA 1851 - Arrow Lake Series.jpg" alt="VGA" width="100">
-            <div class="ms-3">
-              <div>Intel Core Ultra 5 225 3.3GHz Up To 4.9GHz - Cache 20MB [Box] Socket LGA 1851 - Arrow Lake Series</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div class="price">Rp1.667.250</div>
-          <div class="old-price">Rp2.099.000 (21%)</div>
-        </td>
-        <td>
-          <div class="input-group input-group-sm" style="width: 120px;">
-            <button class="btn btn-minus">-</button>
-            <input type="text" class="form-control text-center qty" value="1">
-            <button class="btn btn-plus">+</button>
-          </div>
-        </td>
-        <td class="total-price">Rp1.667.250</td>
-        <td><button class="btn btn-outline-danger btn-sm">🗑 Hapus</button></td>
-      </tr>
+  <tbody id="cart-items">
+      <!-- Cart items will be loaded dynamically -->
     </tbody>
   </table>
 
@@ -211,27 +181,133 @@
 </div>
 
 <script>
-  // Fungsi tambah/kurang jumlah
-  document.querySelectorAll('.btn-plus').forEach(btn => {
-    btn.addEventListener('click', () => {
-      let input = btn.parentElement.querySelector('.qty');
-      input.value = parseInt(input.value) + 1;
+  document.addEventListener('DOMContentLoaded', function() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let selectedItems = [];
+
+    function loadCart() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      cartItemsContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<tr><td colspan="6" class="text-center py-4">Keranjang kosong</td></tr>';
+        updateCartBadge();
+        updateTotal();
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><input type="checkbox" class="check-item" data-index="${index}"></td>
+          <td>
+            <div class="d-flex align-items-center">
+              <img src="${item.image}" alt="${item.name}" width="80">
+              <div class="ms-3">
+                <div>${item.name}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="price">Rp${item.price.toLocaleString()}</div>
+          </td>
+          <td>
+            <div class="input-group input-group-sm" style="width: 120px;">
+              <button class="btn btn-minus" data-index="${index}">-</button>
+              <input type="text" class="form-control text-center qty" value="${item.quantity}" data-index="${index}">
+              <button class="btn btn-plus" data-index="${index}">+</button>
+            </div>
+          </td>
+          <td class="total-price">Rp${(item.price * item.quantity).toLocaleString()}</td>
+          <td><button class="btn btn-outline-danger btn-sm remove-item" data-index="${index}">🗑 Hapus</button></td>
+        `;
+        cartItemsContainer.appendChild(row);
+      });
+
+      updateCartBadge();
+      updateTotal();
+      attachEventListeners();
+    }
+
+    function updateCartBadge() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cart-badge');
+      if (badge) {
+        badge.textContent = totalItems;
+      }
+    }
+
+    function attachEventListeners() {
+      // Quantity buttons
+      document.querySelectorAll('.btn-plus').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          cart[index].quantity += 1;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        });
+      });
+
+      document.querySelectorAll('.btn-minus').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+          }
+        });
+      });
+
+      // Remove item
+      document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          loadCart();
+        });
+      });
+
+      // Checkbox selection
+      document.querySelectorAll('.check-item').forEach(cb => {
+        cb.addEventListener('change', function() {
+          const index = parseInt(this.dataset.index);
+          if (this.checked) {
+            selectedItems.push(index);
+          } else {
+            selectedItems = selectedItems.filter(i => i !== index);
+          }
+          updateTotal();
+        });
+      });
+    }
+
+    function updateTotal() {
+      let total = 0;
+      selectedItems.forEach(index => {
+        if (cart[index]) {
+          total += cart[index].price * cart[index].quantity;
+        }
+      });
+      document.querySelector('.footer strong').textContent = `Total Bayar: Rp${total.toLocaleString()}`;
+    }
+
+    // Select all checkbox
+    const checkAll = document.getElementById('checkAll');
+    checkAll.addEventListener('change', () => {
+      const items = document.querySelectorAll('.check-item');
+      selectedItems = [];
+      items.forEach((cb, index) => {
+        cb.checked = checkAll.checked;
+        if (checkAll.checked) {
+          selectedItems.push(index);
+        }
+      });
+      updateTotal();
     });
-  });
 
-  document.querySelectorAll('.btn-minus').forEach(btn => {
-    btn.addEventListener('click', () => {
-      let input = btn.parentElement.querySelector('.qty');
-      if (parseInt(input.value) > 1) input.value = parseInt(input.value) - 1;
-    });
-  });
-
-  // Pilih semua checkbox
-  const checkAll = document.getElementById('checkAll');
-  const items = document.querySelectorAll('.check-item');
-
-  checkAll.addEventListener('change', () => {
-    items.forEach(cb => cb.checked = checkAll.checked);
+    loadCart();
   });
 </script>
 

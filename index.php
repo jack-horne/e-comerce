@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/simple-banner.css">
 </head>
 <body>
     <!-- Navbar Start -->
@@ -15,7 +16,7 @@
 
     
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
-      <img src="public/image/logo.png" alt="Logo" width="35" height="35" class="me-2">
+      <img src="public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
       Pixel Part
     </a>
 
@@ -72,7 +73,8 @@
     </nav>
 
     <!-- Promo Banner Section -->
-    <section class="promo-banner">
+     <br>
+        <section class="promo-banner">
         <div class="container-fluid px-4">
             <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -82,27 +84,30 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="public/image/banner/banner1.jpg" class="d-block w-100" alt="Promo 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Diskon Hingga 50%</h5>
-                        <p>Untuk Semua Komponen PC Gaming Terbaru</p>
-                        <a href="#produk" class="btn btn-primary">Belanja Sekarang</a>
+                    <div class="simple-banner-slide">
+                        <div class="simple-banner-content">
+                            <h2>Diskon Hingga 50%</h2>
+                            <p>Untuk Semua Komponen PC Gaming Terbaru</p>
+                            <a href="#produk" class="btn btn-primary btn-lg">Belanja Sekarang</a>
+                        </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="public/image/banner/banner2.jpg" class="d-block w-100" alt="Promo 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Garansi Resmi 2 Tahun</h5>
-                        <p>Semua Produk Elektronik Berkualitas</p>
-                        <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+                    <div class="simple-banner-slide">
+                        <div class="simple-banner-content">
+                            <h2>Garansi Resmi 2 Tahun</h2>
+                            <p>Semua Produk Elektronik Berkualitas</p>
+                            <a href="#produk" class="btn btn-primary btn-lg">Lihat Produk</a>
+                        </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="public/image/banner/banner3.jpg" class="d-block w-100" alt="Promo 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Pengiriman Gratis</h5>
-                        <p>Untuk Pembelian Minimal Rp 1.000.000</p>
-                        <a href="#produk" class="btn btn-primary">Order Sekarang</a>
+                    <div class="simple-banner-slide">
+                        <div class="simple-banner-content">
+                            <h2>Pengiriman Gratis</h2>
+                            <p>Untuk Pembelian Minimal Rp 1.000.000</p>
+                            <a href="#produk" class="btn btn-primary btn-lg">Order Sekarang</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,7 +131,7 @@
             <div class="row g-4">
                 <!-- Product Card 1 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card">
+                    <div class="product-card" data-id="1" data-name="Gigabyte AORUS GeForce RTX™ 5090" data-price="14000000" data-image="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg">
                         <div class="product-image-container">
                             <img src="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg" alt="RTX 5090">
                         </div>
@@ -139,7 +144,7 @@
                             <p class="product-price">Rp 14.000.000</p>
                             <div class="d-flex gap-2">
                                 <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
-                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-keranjang flex-fill add-to-cart"><i class="fas fa-shopping-cart"></i> Keranjang</button>
                             </div>
                         </div>
                     </div>
@@ -310,13 +315,51 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/banner.js"></script>
     <script>
-        // Configure carousel to auto-slide every 5 seconds
+        // Configure carousel to auto-slide every 3 seconds
         document.addEventListener('DOMContentLoaded', function() {
             const carousel = document.getElementById('promoCarousel');
             const carouselInstance = new bootstrap.Carousel(carousel, {
-                interval: 5000, // 5 seconds
+                interval: 3000, // 3 seconds
                 ride: 'carousel'
             });
+
+            // Shopping cart functionality
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            updateCartBadge();
+
+            // Add to cart event listeners
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const product = {
+                        id: productCard.dataset.id,
+                        name: productCard.dataset.name,
+                        price: parseInt(productCard.dataset.price),
+                        image: productCard.dataset.image,
+                        quantity: 1
+                    };
+
+                    // Check if product already in cart
+                    const existingProduct = cart.find(item => item.id === product.id);
+                    if (existingProduct) {
+                        existingProduct.quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartBadge();
+                    alert('Produk ditambahkan ke keranjang!');
+                });
+            });
+
+            function updateCartBadge() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const badge = document.querySelector('.badge');
+                if (badge) {
+                    badge.textContent = totalItems;
+                }
+            }
         });
     </script>
     
