@@ -1,0 +1,10 @@
+- [x] Update first carousel item image src to 'public/image/banner promo.jpg'
+- [x] Update second carousel item image src to 'public/image/banner promo.jpg'
+- [x] Update third carousel item image src to 'public/image/banner promo.jpg'
+- [x] Test the banner display using browser
+- [x] Adjust promo banner size to be more normal for the web
+- [x] Make images fit properly in the banner (add object-fit)
+- [x] Change auto-slide interval to 3 seconds
+- [x] Ensure manual arrow buttons are visible and functional
+- [x] Simplify promo banner design - remove images and make it text-based
+- [x] Update CSS for simple banner styling

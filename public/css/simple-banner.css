@@ -1,0 +1,44 @@
+/* Simple Banner Styling */
+.simple-banner-slide {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+}
+
+.simple-banner-content {
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.simple-banner-content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.simple-banner-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.simple-banner-content .btn {
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.simple-banner-content .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}

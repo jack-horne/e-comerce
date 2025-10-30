@@ -61,7 +61,7 @@
             <div class="row g-4">
                 <!-- Product Card 1 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card">
+                    <div class="product-card" data-id="1" data-name="Gigabyte AORUS GeForce RTX™ 5090" data-price="14000000" data-image="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg">
                         <div class="product-image-container">
                             <img src="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg" alt="RTX 5090">
                         </div>
@@ -72,10 +72,13 @@
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 14.000.000</p>
                             <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill">Beli</button>
-                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                <button class="btn-keranjang flex-fill add-to-cart"><i class="fas fa-shopping-cart"></i> Keranjang</button>
                             </div>
-                    
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Product Card 2 -->
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="product-card">
@@ -110,7 +113,7 @@
                             <div class="stock-badge in-stock">✓ Tersedia</div>
                             <p class="product-price">Rp 5.000.000</p>
                             <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill">Beli</button>
+                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
                                 <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
                             </div>
                         </div>
@@ -147,62 +150,67 @@
             <h2 class="section-title">Kategori Produk</h2>
 
         <section class="product-category container my-5">
-        <div class="row justify-content-center g-4 text-center">
-
-            <!-- Item 1 -->
-            <div class="container text-center mt-4">
-                <div class="row justify-content-center g-4">
-                <div class="col-6 col-md-3">
-                <img src="public/image/icons/prosesor.jpeg" alt="Prosesor" 
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p class="fw-semibold mt-2">Prosesor</p>
+            <div class="row justify-content-center g-4 text-center align-items-center">
+                <!-- Item 1 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=1" class="text-decoration-none text-center">
+                        <img src="public/image/icons/prosesor.jpeg" alt="Prosesor"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Prosesor</p>
+                    </a>
                 </div>
 
+                <!-- Item 2 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=2" class="text-decoration-none text-center">
+                        <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Motherboard</p>
+                    </a>
+                </div>
 
-            <!-- Item 2 -->
-            <div class="col-6 col-md-3">
-                <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p class="fw-semibold mt-2"> </p>Motherboard</p>
-            </div>
-            </div>
+                <!-- Item 3 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=3" class="text-decoration-none text-center">
+                        <img src="public/image/icons/psu.jpeg" alt="Power Supply Unit"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Power Supply Unit</p>
+                    </a>
+                </div>
 
-            <!-- Item 3 -->
-            <div class="col-6 col-md-3">
-               <img src="public/image/icons/psu.jpeg" alt=""
-                    class="img-fluid rounded-circle shadow-sm border" 
-                    style="width: 120px; height: 120px; object-fit: cover;">
-                <p>Power Supply unit</p>
-            </div>
-            </div>
+                <!-- Item 4 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=4" class="text-decoration-none text-center">
+                        <img src="public/image/icons/ram.jpeg" alt="RAM"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">RAM</p>
+                    </a>
+                </div>
 
-            <!-- Item 4 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/ram.jpeg" alt="Smartwatch">
-                <p>Smartwatch</p>
-            </div>
-            </div>
+                <!-- Item 5 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=5" class="text-decoration-none text-center">
+                        <img src="public/image/icons/storage.jpeg" alt="Storage"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">Storage</p>
+                    </a>
+                </div>
 
-            <!-- Item 5 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/storage.jpeg" alt="Printer & Scanner">
-                <p>Printer & Scanner</p>
+                <!-- Item 6 -->
+                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
+                    <a href="view/category.php?id=6" class="text-decoration-none text-center">
+                        <img src="public/image/icons/vga.jpeg" alt="VGA"
+                            class="img-fluid rounded-circle shadow-sm border mb-2"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <p class="fw-semibold mb-0 text-dark">VGA</p>
+                    </a>
+                </div>
             </div>
-            </div>
-
-            <!-- Item 6 -->
-            <div class="col-6 col-sm-4 col-md-2">
-            <div class="category-item">
-                <img src="public/image/icons/vga.jpeg" alt="Accessories">
-                <p>Accessories</p>
-            </div>
-            </div>
-
-        </div>
         </section>
 
 
