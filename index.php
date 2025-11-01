@@ -1,9 +1,26 @@
+<?php
+require_once 'backend/connection.php';
+
+// Ambil produk flash sale (diskon > 0) dengan limit 8
+$flash_sale_query = "SELECT p.*, k.nm_kategori
+                     FROM produk p
+                     LEFT JOIN kat_produk k ON p.id_kategori = k.id_kategori
+                     WHERE p.diskon > 0 AND p.kodisi = 1
+                     ORDER BY p.diskon DESC, p.id_produk DESC
+                     LIMIT 8";
+$flash_sale_result = mysqli_query($conn, $flash_sale_query);
+
+// Ambil semua kategori untuk section kategori
+$categories_query = "SELECT * FROM kat_produk ORDER BY nm_kategori";
+$categories_result = mysqli_query($conn, $categories_query);
+?>
+
 <!doctype html>
 <html lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MyWebsite - E-commerce</title>
+    <title>Pixel Part</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/style.css">
@@ -14,21 +31,17 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
   <div class="container-fluid px-4">
 
-    
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
       <img src="public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
       Pixel Part
     </a>
 
-    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    
     <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
 
-    
       <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
         <div class="input-group w-75 w-lg-50">
           <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
@@ -52,7 +65,7 @@
         <li class="nav-item position-relative">
           <a class="nav-link text-white fw-semibold" href="view/template/chart.php">
             <i class="fas fa-shopping-cart"></i> Keranjang
-            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
           </a>
         </li>
       </ul>
@@ -129,88 +142,47 @@
             <h2 class="section-title">Flash Sale</h2>
 
             <div class="row g-4">
-                <!-- Product Card 1 -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card" data-id="1" data-name="Gigabyte AORUS GeForce RTX™ 5090" data-price="14000000" data-image="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg">
-                        <div class="product-image-container">
-                            <img src="public/image/product/Gigabyte AORUS GeForce RTX™ 5090 MASTER ICE 32G GV-N5090AORUSM-ICE-32GD.jpg" alt="RTX 5090">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-discount">-15%</div>
-                            <h5 class="product-title">Gigabyte AORUS GeForce RTX™ 5090</h5>
-                            <p class="product-subtitle">MASTER ICE 32G</p>
-                            <div class="product-rating"><i class="fas fa-star"></i> 4.8 (128)</div>
-                            <div class="stock-badge in-stock">✓ Tersedia</div>
-                            <p class="product-price">Rp 14.000.000</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
-                                <button class="btn-keranjang flex-fill add-to-cart"><i class="fas fa-shopping-cart"></i> Keranjang</button>
+                <?php if (mysqli_num_rows($flash_sale_result) > 0): ?>
+                    <?php while ($row = mysqli_fetch_assoc($flash_sale_result)): ?>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="product-card" data-id="<?php echo $row['id_produk']; ?>" data-name="<?php echo htmlspecialchars($row['nm_produk']); ?>" data-price="<?php echo $row['harga'] * (1 - $row['diskon']/100); ?>" data-image="public/image/product/<?php echo htmlspecialchars($row['gambar']); ?>">
+                                <div class="product-image-container">
+                                    <?php if (!empty($row['gambar'])): ?>
+                                        <img src="public/image/product/<?php echo htmlspecialchars($row['gambar']); ?>" alt="<?php echo htmlspecialchars($row['nm_produk']); ?>">
+                                    <?php else: ?>
+                                        <img src="public/image/product/default.jpg" alt="No Image">
+                                    <?php endif; ?>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-discount">-<?php echo $row['diskon']; ?>%</div>
+                                    <h5 class="product-title"><?php echo htmlspecialchars($row['nm_produk']); ?></h5>
+                                    <p class="product-subtitle"><?php echo htmlspecialchars($row['nm_kategori']); ?></p>
+                                    <div class="product-rating"><i class="fas fa-star"></i> <?php echo number_format($row['rate'] ?? 0, 1); ?> (<?php echo rand(10, 200); ?>)</div>
+                                    <?php
+                                    $stok = $row['qyt'];
+                                    $stock_class = $stok > 10 ? 'in-stock' : ($stok > 0 ? 'low-stock' : 'out-stock');
+                                    $stock_text = $stok > 10 ? '✓ Tersedia' : ($stok > 0 ? '⚠ Terbatas' : '✗ Habis');
+                                    ?>
+                                    <div class="stock-badge <?php echo $stock_class; ?>"><?php echo $stock_text; ?></div>
+                                    <p class="product-price">
+                                        <span class="text-muted text-decoration-line-through">Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></span>
+                                        Rp <?php echo number_format($row['harga'] * (1 - $row['diskon']/100), 0, ',', '.'); ?>
+                                    </p>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn-beli flex-fill" onclick="beliProduk(<?php echo $row['id_produk']; ?>)"><i class="fas fa-shopping-bag"></i> Beli</button>
+                                        <button class="btn-keranjang flex-fill add-to-cart" onclick="addToCart(<?php echo $row['id_produk']; ?>, '<?php echo addslashes($row['nm_produk']); ?>', <?php echo $row['harga'] * (1 - $row['diskon']/100); ?>, '<?php echo addslashes($row['gambar']); ?>')"><i class="fas fa-shopping-cart"></i> Keranjang</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-tags fa-3x text-muted mb-3"></i>
+                        <h4 class="text-muted">Tidak ada produk flash sale saat ini</h4>
+                        <p class="text-muted">Produk flash sale akan segera hadir.</p>
                     </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="public/image/produk2.jpg" alt="Produk">
-                        </div>
-                        <div class="product-info">
-                            <h5 class="product-title">Nama Produk Elektronik Premium</h5>
-                            <p class="product-subtitle">Spesifikasi Produk</p>
-                            <div class="product-rating"><i class="fas fa-star"></i> 4.5 (95)</div>
-                            <div class="stock-badge low-stock">⚠ Terbatas</div>
-                            <p class="product-price">Rp 8.500.000</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
-                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="public/image/produk3.jpg" alt="Produk">
-                        </div>
-                      <div class="product-info">
-                        <div class="product-discount">-8%</div>
-                            <h5 class="product-title">Produk Terbaru Elektronik</h5>
-                            <p class="product-subtitle">Deskripsi Singkat</p>
-                            <div class="product-rating"><i class="fas fa-star"></i> 5.0 (256)</div>
-                            <div class="stock-badge in-stock">✓ Tersedia</div>
-                            <p class="product-price">Rp 5.000.000</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
-                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 4 -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="public/image/produk4.jpg" alt="Produk">
-                        </div>
-                        <div class="product-info">
-                            <div class="product-discount">-10%</div>
-                            <h5 class="product-title">Aksesori Elektronik Berkualitas</h5>
-                            <p class="product-subtitle">Garansi Resmi 2 Tahun</p>
-                            <div class="product-rating"><i class="fas fa-star"></i> 4.7 (142)</div>
-                            <div class="stock-badge in-stock">✓ Tersedia</div>
-                            <p class="product-price">Rp 3.500.000</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn-beli flex-fill"><i class="fas fa-shopping-bag"></i> Beli</button>
-                                <button class="btn-keranjang flex-fill"><i class="fas fa-shopping-cart"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -222,65 +194,38 @@
             <h2 class="section-title">Kategori Produk</h2>
 
         <section class="product-category container my-5">
-            <div class="row justify-content-center g-4 text-center align-items-center">
-                <!-- Item 1 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=1" class="text-decoration-none text-center">
-                        <img src="public/image/icons/prosesor.jpeg" alt="Prosesor"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">Prosesor</p>
-                    </a>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=2" class="text-decoration-none text-center">
-                        <img src="public/image/icons/motherboard.jpeg" alt="Motherboard"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">Motherboard</p>
-                    </a>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=3" class="text-decoration-none text-center">
-                        <img src="public/image/icons/psu.jpeg" alt="Power Supply Unit"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">Power Supply Unit</p>
-                    </a>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=4" class="text-decoration-none text-center">
-                        <img src="public/image/icons/ram.jpeg" alt="RAM"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">RAM</p>
-                    </a>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=5" class="text-decoration-none text-center">
-                        <img src="public/image/icons/storage.jpeg" alt="Storage"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">Storage</p>
-                    </a>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="col-6 col-md-2 d-flex flex-column align-items-center">
-                    <a href="view/category.php?id=6" class="text-decoration-none text-center">
-                        <img src="public/image/icons/vga.jpeg" alt="VGA"
-                            class="img-fluid rounded-circle shadow-sm border mb-2"
-                            style="width: 120px; height: 120px; object-fit: cover;">
-                        <p class="fw-semibold mb-0 text-dark">VGA</p>
-                    </a>
+            <div class="category-scroll-container">
+                <div class="category-scroll-wrapper">
+                    <?php if (mysqli_num_rows($categories_result) > 0): ?>
+                        <?php
+                        $category_icons = [
+                            1 => 'coliing fan.jpeg',
+                            2 => 'motherboard.jpeg',
+                            3 => 'psu.jpeg',
+                            4 => 'prosesor.jpeg',
+                            5 => 'ram.jpeg',
+                            6 => 'storage.jpeg',
+                            7 => 'vga.jpeg'
+                        ];
+                        $count = 0;
+                        while ($kat = mysqli_fetch_assoc($categories_result)):
+                            $count++;
+                            $icon = isset($category_icons[$count]) ? $category_icons[$count] : 'cpu.svg';
+                        ?>
+                            <div class="category-item">
+                                <a href="view/category.php?id=<?php echo $kat['id_kategori']; ?>" class="text-decoration-none text-center">
+                                    <img src="public/image/icons/<?php echo $icon; ?>" alt="<?php echo htmlspecialchars($kat['nm_kategori']); ?>"
+                                        class="img-fluid rounded-circle shadow-sm border mb-2"
+                                        style="width: 120px; height: 120px; object-fit: cover;">
+                                    <p class="fw-semibold mb-0 text-dark"><?php echo htmlspecialchars($kat['nm_kategori']); ?></p>
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <div class="text-center">
+                            <p class="text-muted">Tidak ada kategori tersedia</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -292,7 +237,7 @@
             <div class="row mb-4">
                 <div class="col-md-4 mb-3 mb-md-0">
                     <h6 class="fw-bold mb-3">Tentang Kami</h6>
-                    <p class="small text-white-50">MyWebsite adalah platform e-commerce terpercaya untuk elektronik berkualitas dengan jaminan harga terbaik.</p>
+                    <p class="small text-white-50">Pixel Part adalah platform e-commerce terpercaya untuk elektronik berkualitas dengan jaminan harga terbaik.</p>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
                     <h6 class="fw-bold mb-3">Layanan</h6>
@@ -315,52 +260,72 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/banner.js"></script>
     <script>
-        // Configure carousel to auto-slide every 3 seconds
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('promoCarousel');
-            const carouselInstance = new bootstrap.Carousel(carousel, {
-                interval: 3000, // 3 seconds
-                ride: 'carousel'
-            });
+        // Shopping cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        updateCartBadge();
 
-            // Shopping cart functionality
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            updateCartBadge();
+        // Add to cart event listeners
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const product = {
+                    id: productCard.dataset.id,
+                    name: productCard.dataset.name,
+                    price: parseInt(productCard.dataset.price),
+                    image: productCard.dataset.image,
+                    quantity: 1
+                };
 
-            // Add to cart event listeners
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productCard = this.closest('.product-card');
-                    const product = {
-                        id: productCard.dataset.id,
-                        name: productCard.dataset.name,
-                        price: parseInt(productCard.dataset.price),
-                        image: productCard.dataset.image,
-                        quantity: 1
-                    };
-
-                    // Check if product already in cart
-                    const existingProduct = cart.find(item => item.id === product.id);
-                    if (existingProduct) {
-                        existingProduct.quantity += 1;
-                    } else {
-                        cart.push(product);
-                    }
-
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartBadge();
-                    alert('Produk ditambahkan ke keranjang!');
-                });
-            });
-
-            function updateCartBadge() {
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                const badge = document.querySelector('.badge');
-                if (badge) {
-                    badge.textContent = totalItems;
+                // Check if product already in cart
+                const existingProduct = cart.find(item => item.id === product.id);
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push(product);
                 }
-            }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartBadge();
+                alert('Produk ditambahkan ke keranjang!');
+            });
         });
+
+        function updateCartBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cart-count');
+            if (badge) {
+                badge.textContent = totalItems;
+            }
+        }
+
+        // Function to add to cart
+        function addToCart(id, name, price, image) {
+            const product = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                quantity: 1
+            };
+
+            // Check if product already in cart
+            const existingProduct = cart.find(item => item.id === product.id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBadge();
+            alert('Produk ditambahkan ke keranjang!');
+        }
+
+        // Function to buy product
+        function beliProduk(id) {
+            // Redirect to product detail or checkout
+            window.location.href = 'view/product_detail.php?id=' + id;
+        }
     </script>
     
 </body>

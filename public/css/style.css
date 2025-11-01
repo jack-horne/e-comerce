@@ -288,9 +288,9 @@ body {
    ============================================= */
 
 .btn-beli {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;
@@ -525,52 +525,93 @@ body {
     padding: 20px 0;
     }
 
+    /* Horizontal scrollable category container */
+    .category-scroll-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        
+    }
+
+    .category-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-scroll-wrapper {
+        display: flex;
+        gap: 20px;
+        padding: 20px 0;
+        min-width: max-content;
+        justify-content: space-between;
+    }
+
     .category-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+        flex: 0 0 auto;
+        width: 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .category-item a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
     }
 
     .category-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    background-color: #f8f9fa;
-    padding: 10px;
-    transition: all 0.3s ease;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        background-color: #f8f9fa;
+        padding: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
     }
 
     .category-item p {
-    margin-top: 10px;
-    font-weight: 600;
-    color: #333;
+        margin-top: 10px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.2;
     }
 
     /* Efek hover */
     .category-item:hover img {
-    transform: scale(1.08);
-    box-shadow: 0 0 12px rgba(0, 123, 255, 0.3);
+        transform: scale(1.08);
+        box-shadow: 0 0 12px rgba(0, 123, 255, 0.3);
+        border-color: #0d6efd;
+    }
+
+    .category-item:hover p {
+        color: #0d6efd;
     }
 
     /* Item aktif */
     .category-item.active {
-    border: 3px solid #0d6efd;
-    border-radius: 12px;
-    padding: 15px;
-    background-color: rgba(13, 110, 253, 0.1);
-    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
+        border: 3px solid #0d6efd;
+        border-radius: 12px;
+        padding: 15px;
+        background-color: rgba(13, 110, 253, 0.1);
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
     }
 
     .category-item.active img {
-    border: 2px solid #0d6efd;
+        border: 2px solid #0d6efd;
     }
 
     .category-item.active p {
-    color: #0d6efd;
-    font-weight: 700;
+        color: #0d6efd;
+        font-weight: 700;
     }
 
 
