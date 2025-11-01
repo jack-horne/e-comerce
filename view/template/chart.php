@@ -108,7 +108,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
       <div class="container-fluid px-4">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-          <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
+          <img src="public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
           Pixel Part
         </a>
 

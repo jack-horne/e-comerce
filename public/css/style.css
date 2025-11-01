@@ -288,9 +288,9 @@ body {
    ============================================= */
 
 .btn-beli {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
     padding: 12px 24px;
     font-size: 16px;
     font-weight: 600;

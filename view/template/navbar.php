@@ -16,12 +16,7 @@
             <a class="nav-link" href="./view/login.php">Login</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="./view/register.php">Buat akun</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./view/chart.php">Keranjang</a>
-            </li>
-        </ul>
+          <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
         </div>
     </div>
     </nav>
