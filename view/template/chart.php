@@ -136,12 +136,7 @@
             <li class="nav-item">
               <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
             </li>
-            <li class="nav-item position-relative">
-              <a class="nav-link text-white fw-semibold" href="chart.php">
-                <i class="fas fa-shopping-cart"></i> Keranjang
-                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-badge">0</span>
-              </a>
-            </li>
+           
           </ul>
         </div>
       </div>
