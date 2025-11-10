@@ -1,42 +1,60 @@
+<?php
+// 1. Ambil pesan dari URL (jika ada)
+$error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : '';
+$success = isset($_GET['success']) ? htmlspecialchars($_GET['success']) : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=">
-  <title>Register</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
-    
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow p-4" style="width: 28rem; border-radius: 1rem;">
+            <h3 class="text-center mb-4">Register</h3>
+            
+            <?php if ($success): ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $success ?>
+                </div>
+            <?php endif; ?>
 
-  <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card shadow p-4" style="width: 28rem; border-radius: 1rem;">
-      <h3 class="text-center mb-4">Register</h3>
-      <form action="register.php" method="POST">
-        <div class="mb-3">
-          <label for="fullname" class="form-label">Nama Lengkap</label>
-          <input type="text" class="form-control" id="fullname" name="fullname" required>
+            <?php if ($error): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $error ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="../backend/register_process.php" method="POST">
+                <div class="mb-3">
+                    <label for="fullname" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm" class="form-label">Konfirmasi Password</label>
+                    <input type="password" class="form-control" id="confirm" name="confirm" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Register</button>
+            </form>
+            
+            <p class="text-center mt-3 mb-0">
+                Sudah punya akun? <a href="login.php" class="text-decoration-none">Login di sini</a>
+            </p>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="mb-3">
-          <label for="confirm" class="form-label">Konfirmasi Password</label>
-          <input type="password" class="form-control" id="confirm" name="confirm" required>
-        </div>
-        <button type="submit" class="btn btn-success w-100">Register</button>
-      </form>
-      <p class="text-center mt-3 mb-0">
-        Sudah punya akun? <a href="login.php" class="text-decoration-none">Login di sini</a>
-      </p>
     </div>
-  </div>
 
 </body>
 </html>
