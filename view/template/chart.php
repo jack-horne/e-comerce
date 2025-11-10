@@ -210,7 +210,7 @@
           <td><input type="checkbox" class="check-item" data-index="${index}"></td>
           <td>
             <div class="d-flex align-items-center">
-              <img src="${item.image}" alt="${item.name}" width="80">
+              <img src="../${item.image}" alt="${item.name}" width="80">
               <div class="ms-3">
                 <div>${item.name}</div>
               </div>

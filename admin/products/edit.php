@@ -58,12 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (in_array(strtolower($filetype), $allowed)) {
             // Generate unique filename
             $new_filename = uniqid() . '_' . time() . '.' . $filetype;
-            $upload_path = '../../publik/image/product/' . $new_filename;
+            $upload_path = '../../public/image/product/' . $new_filename;
             
             if (move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path)) {
                 // Hapus gambar lama jika ada
                 if (!empty($produk['gambar'])) {
-                    $old_image = '../../publik/image/product/' . $produk['gambar'];
+                    $old_image = '../../public/image/product/' . $produk['gambar'];
                     if (file_exists($old_image)) {
                         unlink($old_image);
                     }
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label class="form-label">Gambar Saat Ini</label>
                                     <br>
                                     <?php if (!empty($produk['gambar'])): ?>
-                                        <img src="../../publik/image/product/<?php echo htmlspecialchars($produk['gambar']); ?>" 
+                                        <img src="../../public/image/product/<?php echo htmlspecialchars($produk['gambar']); ?>"
                                              class="current-image" alt="Current Image">
                                         <p class="text-muted small">File: <?php echo htmlspecialchars($produk['gambar']); ?></p>
                                     <?php else: ?>

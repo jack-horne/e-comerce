@@ -113,7 +113,7 @@ if (isset($_GET['error'])) {
     </style>
 </head>
 <body>
-    <?php include '../navbar-admin.php'; ?>
+   
     
     <div class="container-fluid">
         <div class="row">
@@ -188,7 +188,7 @@ if (isset($_GET['error'])) {
                                                 <td><?php echo $row['id_produk']; ?></td>
                                                 <td>
                                                     <?php if (!empty($row['gambar'])): ?>
-                                                        <img src="../../publik/image/product/<?php echo htmlspecialchars($row['gambar']); ?>" 
+                                                        <img src="../../public/image/product/<?php echo htmlspecialchars($row['gambar']); ?>"
                                                              class="product-img" alt="Produk">
                                                     <?php else: ?>
                                                         <div class="product-img bg-secondary d-flex align-items-center justify-content-center">
