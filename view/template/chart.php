@@ -108,7 +108,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
       <div class="container-fluid px-4">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-          <img src="public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
+          <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
           Pixel Part
         </a>
 
@@ -136,7 +136,12 @@
             <li class="nav-item">
               <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
             </li>
-           
+            <li class="nav-item position-relative">
+              <a class="nav-link text-white fw-semibold" href="chart.php">
+                <i class="fas fa-shopping-cart"></i> Keranjang
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
