@@ -1,4 +1,6 @@
-/* ===================== GLOBAL ===================== */
+/* =====================
+   GLOBAL
+===================== */
 body {
     font-family: 'Inter', 'Segoe UI', sans-serif;
     background-color: #f5f7fb;
@@ -10,20 +12,18 @@ body {
     min-height: 100vh;
 }
 
-/* ===================== SIDEBAR ===================== */
+/* =====================
+   SIDEBAR
+===================== */
 .sidebar {
     width: 240px;
-    background: linear-gradient(180deg, #111827, #1f2937);
+    background-color: #1f2937;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     z-index: 1040;
     transition: transform 0.3s ease;
-}
-
-.sidebar-header {
-    font-weight: 600;
 }
 
 .sidebar-nav {
@@ -37,8 +37,8 @@ body {
     padding: 12px 20px;
     color: #d1d5db;
     font-weight: 500;
-    border-radius: 10px;
-    margin: 6px 12px;
+    border-radius: 8px;
+    margin: 4px 12px;
     transition: all 0.2s ease;
 }
 
@@ -55,7 +55,6 @@ body {
 .sidebar .nav-link.active {
     background-color: #2563eb;
     color: #fff;
-    box-shadow: 0 6px 18px rgba(37,99,235,.4);
 }
 
 /* Mobile Sidebar */
@@ -63,17 +62,16 @@ body {
     .sidebar {
         transform: translateX(-100%);
     }
-
     .sidebar.show {
         transform: translateX(0);
     }
 }
 
-/* ===================== OVERLAY ===================== */
+/* Overlay */
 .sidebar-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.45);
+    background: rgba(0,0,0,.4);
     z-index: 1030;
     display: none;
 }
@@ -82,7 +80,9 @@ body {
     display: block;
 }
 
-/* ===================== MAIN CONTENT ===================== */
+/* =====================
+   MAIN CONTENT
+===================== */
 .main-content {
     margin-left: 240px;
     width: 100%;
@@ -94,7 +94,9 @@ body {
     }
 }
 
-/* ===================== NAVBAR ===================== */
+/* =====================
+   NAVBAR TOP
+===================== */
 .navbar {
     height: 64px;
 }
@@ -103,11 +105,13 @@ body {
     font-weight: 600;
 }
 
-/* ===================== CARD ===================== */
+/* =====================
+   CARD
+===================== */
 .card {
     border: none;
-    border-radius: 16px;
-    box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
 }
 
 .card-header {
@@ -120,7 +124,13 @@ body {
     font-weight: 600;
 }
 
-/* ===================== TABLE ===================== */
+/* =====================
+   TABLE
+===================== */
+.table {
+    margin-bottom: 0;
+}
+
 .table thead th {
     background-color: #f1f5f9;
     font-weight: 600;
@@ -135,9 +145,11 @@ body {
     background-color: #f9fafb;
 }
 
-/* ===================== BUTTON ===================== */
+/* =====================
+   BUTTON
+===================== */
 .btn {
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 500;
 }
 
@@ -154,14 +166,18 @@ body {
     border: none;
 }
 
-/* ===================== BADGE ===================== */
+/* =====================
+   BADGE
+===================== */
 .badge {
-    padding: 6px 12px;
+    padding: 6px 10px;
     border-radius: 999px;
     font-size: 13px;
 }
 
-/* ===================== TABLE ACTION ===================== */
+/* =====================
+   ACTION BUTTON SPACING
+===================== */
 .table td .btn {
-    margin-right: 6px;
+    margin-right: 4px;
 }
