@@ -115,7 +115,7 @@
 
 =======
         <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-          <img src="public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
+          <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
           Pixel Part
         </a>
 >>>>>>> fe5ecd52205490683c7d147950170d4410a813c5
@@ -144,7 +144,12 @@
             <li class="nav-item">
               <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
             </li>
-           
+            <li class="nav-item position-relative">
+              <a class="nav-link text-white fw-semibold" href="chart.php">
+                <i class="fas fa-shopping-cart"></i> Keranjang
+                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -205,7 +210,7 @@
           <td><input type="checkbox" class="check-item" data-index="${index}"></td>
           <td>
             <div class="d-flex align-items-center">
-              <img src="${item.image}" alt="${item.name}" width="80">
+              <img src="../${item.image}" alt="${item.name}" width="80">
               <div class="ms-3">
                 <div>${item.name}</div>
               </div>

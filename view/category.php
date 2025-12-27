@@ -206,7 +206,7 @@ $result = mysqli_query($conn, $query);
 
         function beliProduk(id) {
             // Redirect to product detail or checkout
-            window.location.href = `product-detail.php?id=${id}`;
+            window.location.href = `product_detail.php?id=${id}`;
         }
 
         function updateCartBadge() {

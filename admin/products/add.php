@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if (in_array(strtolower($filetype), $allowed)) {
             $new_filename = uniqid() . '_' . time() . '.' . $filetype;
-            $upload_path = '../../publik/image/product/' . $new_filename;
+            $upload_path = '../../public/image/product/' . $new_filename;
             
             if (move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path)) {
                 $gambar_name = $new_filename;
