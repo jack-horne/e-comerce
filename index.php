@@ -66,7 +66,7 @@ $result_featured = mysqli_query($conn, $query_featured);
     <section class="build">
         <h2>Build Your <span>New PC</span></h2>
         <p>Rakit PC kamu sendiri dengan komponen terbaik pilihan kami.</p>
-        <button class="btn">Build Sekarang</button>
+        <button class="btn" onclick="window.location.href='view/pc_builder.php'">Build Sekarang</button>
     </section>
 
     <!-- PRODUCTS SECTION -->

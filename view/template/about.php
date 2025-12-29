@@ -32,26 +32,17 @@
             </div>
             <div class="carousel-item">
               <img src="images\Hell ound pic.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="blackpantherp7-docs">Blackpantherp7</h2>
+              <h2 style="font-family: 'Ubuntu', sans-serif;" class="blackpantherp7-docs">Muhammad Irfan Dzakir</h2>
               <p class="blackpantherp7-docs" style="font-family: 'Montserrat', sans-serif;">Hey all the subs of Helican Explanations! This is Blackpantherp7 here, Here is a little bit about me: I am an intermediate developer, I'm just going to become 15 years, at the time of publishing I am working on making a toDo list using EJS and node.js.
                 I am one of the people who contributed in making this website to welcome all the subscribers of the channel. Look forward to lots of great and interesting content in the coming videos of the channel. And.. dont get scared by the profile-pic, I am actually quite nice :D. <br>
                 Wait a few seconds to see what the other devs have to say!</p>
             </div>
             <div class="carousel-item">
               <img src="images\Intersted-coder-profilepic.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="hemagna-docs">Hemagna</h2>
+              <h2 style="font-family: 'Ubuntu', sans-serif;" class="hemagna-docs">Saif Maajid Mubarak</h2>
               <p class="hemagna-docs" style="font-family: 'Montserrat', sans-serif;">Hey guys! Hemagna Here, I am an intermediate website and app developer, and I am currently working on a project for one of school asignments :P . I'm one of the developers who helped the others in this website. I think I'm pretty good at HTML, CSS, JS, Maniuplating(JSON), python and scratch. Stay tuned to this channel and expect some great content! <br> Wait a few seconds to know more about the other developers</p>
             </div>
-            <div class="carousel-item">
-              <img src="images\franklyn-profile-pic.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="franklyn-docs">Franklyn</h2>
-              <p style="font-family: 'Montserrat', sans-serif;" class="franklyn-docs">Hello! My name is Franklyn. Honour to meet you guys! Now, For a little bit about myself, I am from Nigeria, I hope to become a full stack website and app developer. I am currently studying JSON manipulating. I know HTML, CSS, JS and jQuery. I rescently made a project called tipster punters which basically gives tips on how to play football and.. that about sums it up! Hang on to this channel and be assured that you will end up with plenty of coding knowledge!</p>
-            </div>
-            <div class="carousel-item">
-              <img src="images\circle-cropped.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="franklyn-docs">Pratik</h2>
-              <p style="font-family: 'Montserrat', sans-serif;" class="franklyn-docs">Hello to all the subscribers of Helican Explanations! Nice to meet you guys, my name is Pratik Mahajan but you can call me Pratik. I am an aspiring web-developer, and until now I know HTML, CSS and I also kow how to use bootstrap and am hoping to learn more in the future. In the future I want to become a successful entrepreneur and I want to gain experience got it by partcipating in a start-up. My ultimate goal for life is, to bring as many good changes to Earth so it will be easier for the future generations to live.</p>
-            </div>
+            
           </div>
           <a class="carousel-control-prev" href="#carousel-about-us" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
