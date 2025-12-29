@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <?php include '../navbar-admin.php'; ?>
+    
     
     <div class="container-fluid">
         <div class="row">

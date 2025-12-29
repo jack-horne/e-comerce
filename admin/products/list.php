@@ -151,7 +151,7 @@ if (isset($_GET['error'])) {
                             </div>
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-secondary w-100">
-                                    <i class="fas fa-search"></i> Filter
+                                    <i class="fas fa-search"></i> Search
                                 </button>
                             </div>
                             <div class="col-md-2">
@@ -188,7 +188,7 @@ if (isset($_GET['error'])) {
                                                 <td><?php echo $row['id_produk']; ?></td>
                                                 <td>
                                                     <?php if (!empty($row['gambar'])): ?>
-                                                        <img src="../../public/image/product/<?php echo htmlspecialchars($row['gambar']); ?>"
+                                                        <img src="<?php echo base_url('public/image/product/' . htmlspecialchars($row['gambar'])); ?>"
                                                              class="product-img" alt="Produk">
                                                     <?php else: ?>
                                                         <div class="product-img bg-secondary d-flex align-items-center justify-content-center">

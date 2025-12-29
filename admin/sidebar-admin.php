@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="C:\laragon\www\e-comerce\admin\products\list.php" class="text-white text-decoration-none d-block p-2 rounded">
+                <a href="products/list.php" class="text-white text-decoration-none d-block p-2 rounded">
                     <i class="fas fa-box me-2"></i> Produk
                 </a>
             </li>

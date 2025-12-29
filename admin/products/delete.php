@@ -30,7 +30,7 @@ $produk = mysqli_fetch_assoc($result);
 
 // Hapus file gambar jika ada
 if (!empty($produk['gambar'])) {
-    $image_path = '../../publik/image/product/' . $produk['gambar'];
+    $image_path = '../../public/image/product/' . $produk['gambar'];
     if (file_exists($image_path)) {
         unlink($image_path); // Hapus file gambar
     }
