@@ -117,7 +117,7 @@ $product = mysqli_fetch_assoc($result);
     </div>
 
     <!-- FOOTER -->
-   <?php include 'C:\laragon\www\e-comerce\view\template\footer.php'; ?>
+   <?php include 'template/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>

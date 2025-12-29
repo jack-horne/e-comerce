@@ -47,7 +47,13 @@ $result_featured = mysqli_query($conn, $query_featured);
         <?php if (mysqli_num_rows($result_kategori) > 0): ?>
             <?php while ($kategori = mysqli_fetch_assoc($result_kategori)): ?>
                 <a href="view/category.php?id=<?php echo $kategori['id_kategori']; ?>" class="category-card">
-                    <img src="public/image/icons/<?php echo strtolower(str_replace(' ', '-', $kategori['nm_kategori'])); ?>.jpeg" alt="<?php echo htmlspecialchars($kategori['nm_kategori']); ?>">
+                    <?php
+                    $image_name = strtolower(str_replace(' ', '-', $kategori['nm_kategori']));
+                    if ($kategori['nm_kategori'] == 'Cooling') {
+                        $image_name = 'cooling fan';
+                    }
+                    ?>
+                    <img src="public/image/icons/<?php echo $image_name; ?>.jpeg" alt="<?php echo htmlspecialchars($kategori['nm_kategori']); ?>">
                     <span><?php echo htmlspecialchars($kategori['nm_kategori']); ?></span>
                 </a>
             <?php endwhile; ?>
