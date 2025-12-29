@@ -29,29 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
         $filetype = pathinfo($_FILES['gambar']['name'], PATHINFO_EXTENSION);
         $new_filename = uniqid() . '_' . time() . '.' . $filetype;
-        $upload_path = '../../publik/image/product/' . $new_filename;
+        $upload_path = '../../public/image/product/' . $new_filename;
         
-<<<<<<< HEAD
         if (move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path)) {
             // Hapus gambar lama jika bukan default
-            if ($produk['gambar'] != 'default.png' && file_exists('../../publik/image/product/' . $produk['gambar'])) {
-                unlink('../../publik/image/product/' . $produk['gambar']);
-=======
-        if (in_array(strtolower($filetype), $allowed)) {
-            // Generate unique filename
-            $new_filename = uniqid() . '_' . time() . '.' . $filetype;
-            $upload_path = '../../public/image/product/' . $new_filename;
-            
-            if (move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path)) {
-                // Hapus gambar lama jika ada
-                if (!empty($produk['gambar'])) {
-                    $old_image = '../../public/image/product/' . $produk['gambar'];
-                    if (file_exists($old_image)) {
-                        unlink($old_image);
-                    }
-                }
-                $gambar_name = $new_filename;
->>>>>>> 9f0263872710e2f3a5bf89c50afadc404ef98824
+            if ($produk['gambar'] != 'default.png' && file_exists('../../public/image/product/' . $produk['gambar'])) {
+                unlink('../../public/image/product/' . $produk['gambar']);
             }
             $gambar_name = $new_filename;
         }
@@ -84,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <?php include '../navbar-admin.php'; ?>
+    
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"><?php include '../sidebar-admin.php'; ?></div>
@@ -109,21 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
-<<<<<<< HEAD
                                     <label class="form-label">Gambar Saat Ini</label><br>
                                     <img src="../../publik/image/product/<?= $produk['gambar']; ?>" class="current-image">
                                     <input type="file" name="gambar" class="form-control" accept="image/*">
-=======
-                                    <label class="form-label">Gambar Saat Ini</label>
-                                    <br>
-                                    <?php if (!empty($produk['gambar'])): ?>
-                                        <img src="../../public/image/product/<?php echo htmlspecialchars($produk['gambar']); ?>"
-                                             class="current-image" alt="Current Image">
-                                        <p class="text-muted small">File: <?php echo htmlspecialchars($produk['gambar']); ?></p>
-                                    <?php else: ?>
-                                        <p class="text-muted">Tidak ada gambar</p>
-                                    <?php endif; ?>
->>>>>>> 9f0263872710e2f3a5bf89c50afadc404ef98824
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Deskripsi</label>

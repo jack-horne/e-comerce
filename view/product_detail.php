@@ -37,48 +37,7 @@ $product = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-                <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
-                Pixel Part
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
-                    <div class="input-group w-75 w-lg-50">
-                        <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
-                        <button class="btn btn-light border-0" type="submit">
-                            <i class="fas fa-search text-primary"></i>
-                        </button>
-                    </div>
-                </form>
-
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="../index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link text-white fw-semibold" href="template/chart.php">
-                            <i class="fas fa-shopping-cart"></i> Keranjang
-                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'C:\laragon\www\e-comerce\view\template\navbar.php'; ?>
 
     <!-- Product Detail Section -->
     <div class="container-fluid px-4 py-5">
@@ -141,6 +100,11 @@ $product = mysqli_fetch_assoc($result);
                                 onclick="addToCart(<?php echo $product['id_produk']; ?>, '<?php echo addslashes($product['nm_produk']); ?>', <?php echo $product['harga'] * (1 - $product['diskon']/100); ?>, '<?php echo addslashes($product['gambar']); ?>')">
                             <i class="fas fa-shopping-cart me-2"></i>Tambah ke Keranjang
                         </button>
+                        <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === TRUE): ?>
+                            <button class="btn btn-outline-danger btn-lg" onclick="addToWishlist(<?php echo $product['id_produk']; ?>)">
+                                <i class="fas fa-heart me-2"></i>Tambah ke Wishlist
+                            </button>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mt-4">
@@ -152,31 +116,8 @@ $product = mysqli_fetch_assoc($result);
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-5 mt-5">
-        <div class="container-fluid px-4">
-            <div class="row mb-4">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="fw-bold mb-3">Tentang Kami</h6>
-                    <p class="small text-white-50">MyWebsite adalah platform e-commerce terpercaya untuk elektronik berkualitas dengan jaminan harga terbaik.</p>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="fw-bold mb-3">Layanan</h6>
-                    <ul class="list-unstyled small">
-                        <li><a href="#" class="text-white-50 text-decoration-none">Pengiriman Gratis</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none">Garansi Resmi</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none">Cicilan 0%</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Hubungi Kami</h6>
-                    <p class="small text-white-50">📞 +62-XXX-XXX-XXX<br>📧 support@mywebsite.com</p>
-                </div>
-            </div>
-            <hr class="bg-secondary">
-            <p class="text-center small mb-0">&copy; 2025 MyWebsite. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- FOOTER -->
+   <?php include 'template/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -216,6 +157,28 @@ $product = mysqli_fetch_assoc($result);
         function beliProduk(id) {
             // Redirect to checkout or order page
             window.location.href = 'template/order.php?id=' + id;
+        }
+
+        function addToWishlist(id) {
+            fetch('../backend/add_to_wishlist.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'product_id=' + id
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Produk ditambahkan ke wishlist!');
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menambahkan ke wishlist');
+            });
         }
     </script>
 </body>

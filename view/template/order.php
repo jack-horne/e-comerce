@@ -61,48 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 <body>
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="../../index.php">
-                <img src="../../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
-                Pixel Part
-            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
-                    <div class="input-group w-75 w-lg-50">
-                        <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
-                        <button class="btn btn-light border-0" type="submit">
-                            <i class="fas fa-search text-primary"></i>
-                        </button>
-                    </div>
-                </form>
-
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="../../index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="../login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="../register.php">Register</a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link text-white fw-semibold" href="chart.php">
-                            <i class="fas fa-shopping-cart"></i> Keranjang
-                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'C:\laragon\www\e-comerce\view\template\navbar.php'; ?>
 
     <!-- Checkout Section -->
     <div class="container-fluid px-4 py-5">
@@ -140,80 +100,66 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </div>
-
-            <!-- Checkout Form -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Informasi Pembelian</h5>
-                    </div>
-                    <div class="card-body">
-                        <?php if (isset($error)): ?>
-                            <div class="alert alert-danger"><?php echo $error; ?></div>
-                        <?php endif; ?>
-
-                        <form method="POST">
-                            <div class="mb-3">
-                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="telepon" class="form-label">Nomor Telepon</label>
-                                <input type="tel" class="form-control" id="telepon" name="telepon" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat Lengkap</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">Jumlah</label>
-                                <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" max="<?php echo $product['qyt']; ?>" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Total Harga</label>
-                                <div class="h5 text-primary" id="total-price">
-                                    Rp <?php echo number_format($product['harga'] * (1 - $product['diskon']/100), 0, ',', '.'); ?>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100">
-                                <i class="fas fa-credit-card me-2"></i>Bayar Sekarang
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+<!-- Checkout Form -->
+     <div class="col-lg-6">
+        <div class="checkout-glass">
+        <div class="checkout-header">
+            <h4>Informasi Pembelian</h4>
+            <p>Lengkapi data Anda untuk melanjutkan pembayaran</p>
         </div>
+
+        <?php if (isset($error)): ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+        <?php endif; ?>
+
+        <form method="POST" class="checkout-form">
+            <div class="form-group">
+                <input type="text" name="nama" required>
+                <label>Nama Lengkap</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" name="telepon" required>
+                <label>Nomor Telepon</label>
+            </div>
+
+            <div class="form-group">
+                <textarea name="alamat" rows="3" required></textarea>
+                <label>Alamat Lengkap</label>
+            </div>
+
+            <div class="form-group">
+                <input type="number" id="quantity" name="quantity"
+                    value="1"
+                    min="1"
+                    max="<?php echo $product['qyt']; ?>"
+                    required>
+                <label>Jumlah</label>
+            </div>
+
+            <div class="total-box">
+                <span>Total Harga</span>
+                <strong id="total-price">
+                    Rp <?php echo number_format($product['harga'] * (1 - $product['diskon']/100), 0, ',', '.'); ?>
+                </strong>
+            </div>
+
+            <button type="submit" class="btn-pay">
+                <i class="fas fa-credit-card"></i>
+                Bayar Sekarang
+            </button>
+        </form>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-5 mt-5">
-        <div class="container-fluid px-4">
-            <div class="row mb-4">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="fw-bold mb-3">Tentang Kami</h6>
-                    <p class="small text-white-50">Pixel Part adalah platform e-commerce terpercaya untuk elektronik berkualitas dengan jaminan harga terbaik.</p>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="fw-bold mb-3">Layanan</h6>
-                    <ul class="list-unstyled small">
-                        <li><a href="#" class="text-white-50 text-decoration-none">Pengiriman Gratis</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none">Garansi Resmi</a></li>
-                        <li><a href="#" class="text-white-50 text-decoration-none">Cicilan 0%</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Hubungi Kami</h6>
-                    <p class="small text-white-50">📞 +62-XXX-XXX-XXX<br>📧 support@pixelpart.com</p>
-                </div>
-            </div>
-            <hr class="bg-secondary">
-            <p class="text-center small mb-0">&copy; 2025 Pixel Part. All rights reserved.</p>
-        </div>
-    </footer>
+
+    <!-- FOOTER -->
+    <?php include 'C:\laragon\www\e-comerce\view\template\footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -236,6 +182,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 badge.textContent = totalItems;
             }
         }
+        
+            const quantityInput = document.getElementById('quantity');
+            const totalPrice = document.getElementById('total-price');
+
+            const price = <?php echo $product['harga'] * (1 - $product['diskon']/100); ?>;
+
+            quantityInput.addEventListener('input', () => {
+                let qty = parseInt(quantityInput.value) || 1;
+                let total = price * qty;
+                totalPrice.innerText = 'Rp ' + total.toLocaleString('id-ID');
+            });
+
     </script>
 </body>
 </html>

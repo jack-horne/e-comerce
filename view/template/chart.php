@@ -1,323 +1,208 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keranjang Belanja</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    body {
-      background-color: #f8f9fa;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    h3 {
-      font-weight: 600;
-      color: #333;
-    }
-
-    .cart-table {
-      border-radius: 15px;
-      overflow: hidden;
-    }
-
-    .cart-table img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      border-radius: 10px;
-      background-color: #f2f2f2;
-      padding: 5px;
-    }
-
-    .cart-table th {
-      background-color: #eef1ff;
-      font-weight: 600;
-    }
-
-    .cart-table tr {
-      transition: 0.2s;
-    }
-
-    .cart-table tr:hover {
-      background-color: #f9faff;
-    }
-
-    .price {
-      color: #e91e63;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: gray;
-      font-size: 0.85rem;
-    }
-
-    .btn-minus, .btn-plus {
-      border: 1px solid #dee2e6;
-      color: #333;
-      transition: 0.2s;
-    }
-
-    .btn-minus:hover, .btn-plus:hover {
-      background-color: #0d6efd;
-      color: #fff;
-    }
-
-    .btn-outline-danger {
-      border-radius: 6px;
-    }
-
-    .footer {
-      margin-top: 25px;
-      padding: 20px 25px;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer strong {
-      font-size: 1.2rem;
-      color: #212529;
-    }
-
-    .btn-success {
-      font-weight: 500;
-      padding: 10px 20px;
-      border-radius: 8px;
-    }
-
-    /* animasi kecil saat hover beli */
-    .btn-success:hover {
-      background-color: #198754;
-      transform: scale(1.03);
-      transition: 0.2s;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Keranjang</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
-      <div class="container-fluid px-4">
-<<<<<<< HEAD
-         <a class="navbar-brand fw-bold d-flex align-items-center" href="index.php">
-      <img src="/e_commerce2/public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
-      Pixel Part
-    </a>
 
-=======
-        <a class="navbar-brand fw-bold d-flex align-items-center" href="../index.php">
-          <img src="../public/image/icons/logo.png" alt="Logo" width="35" height="35" class="me-2">
-          Pixel Part
-        </a>
->>>>>>> fe5ecd52205490683c7d147950170d4410a813c5
+<div class="cart-container">
+    <h1 class="cart-title">🛒 Keranjang Belanja</h1>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-          <form class="d-flex flex-grow-1 justify-content-center mx-lg-4 my-2 my-lg-0" role="search">
-            <div class="input-group w-75 w-lg-50">
-              <input class="form-control border-0" type="search" placeholder="Search..." aria-label="Search">
-              <button class="btn btn-light border-0" type="submit">
-                <i class="fas fa-search text-primary"></i>
-              </button>
-            </div>
-          </form>
-
-          <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item">
-              <a class="nav-link text-white fw-semibold" href="../index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white fw-semibold" href="login.php">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white fw-semibold" href="register.php">Register</a>
-            </li>
-            <li class="nav-item position-relative">
-              <a class="nav-link text-white fw-semibold" href="chart.php">
-                <i class="fas fa-shopping-cart"></i> Keranjang
-                <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="cart-count">0</span>
-              </a>
-            </li>
-          </ul>
+    <div class="cart-item" data-price="150000">
+        <div class="item-info">
+            <h3>Gaming Mouse RGB</h3>
+            <p>Rp 150.000</p>
         </div>
-      </div>
-    </nav>
-
-<div class="container mt-4">
-  <h3 class="mb-4 text-primary">🛒 Keranjang Belanja</h3>
-
-  <!-- Tabel Produk -->
-  <table class="table cart-table bg-white shadow-sm">
-    <thead>
-      <tr>
-        <th><input type="checkbox" id="checkAll"></th>
-        <th>Produk</th>
-        <th>Harga</th>
-        <th>Jumlah</th>
-        <th>Total</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
-  <tbody id="cart-items">
-      <!-- Cart items will be loaded dynamically -->
-    </tbody>
-  </table>
-
-  <!-- Footer -->
-  <div class="footer">
-    <div>
-      <input type="checkbox" id="selectAll"> 
-      <label for="selectAll" class="ms-2">Pilih Semua</label>
+        <div class="item-action">
+            <button class="qty-btn minus">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus">+</button>
+            <button class="delete">✖</button>
+        </div>
     </div>
-    <div>
-      <strong>Total Bayar: Rp3.137.390</strong>
-      <button class="btn btn-success ms-3">Beli Sekarang</button>
+
+    <div class="cart-item" data-price="350000">
+        <div class="item-info">
+            <h3>Mechanical Keyboard</h3>
+            <p>Rp 350.000</p>
+        </div>
+        <div class="item-action">
+            <button class="qty-btn minus">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus">+</button>
+            <button class="delete">✖</button>
+        </div>
     </div>
-  </div>
+
+    <div class="cart-footer">
+        <h2>Total: <span id="total">Rp 0</span></h2>
+        <button class="checkout">Checkout</button>
+    </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let selectedItems = [];
-
-    function loadCart() {
-      const cartItemsContainer = document.getElementById('cart-items');
-      cartItemsContainer.innerHTML = '';
-
-      if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<tr><td colspan="6" class="text-center py-4">Keranjang kosong</td></tr>';
-        updateCartBadge();
-        updateTotal();
-        return;
-      }
-
-      cart.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td><input type="checkbox" class="check-item" data-index="${index}"></td>
-          <td>
-            <div class="d-flex align-items-center">
-              <img src="../${item.image}" alt="${item.name}" width="80">
-              <div class="ms-3">
-                <div>${item.name}</div>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="price">Rp${item.price.toLocaleString()}</div>
-          </td>
-          <td>
-            <div class="input-group input-group-sm" style="width: 120px;">
-              <button class="btn btn-minus" data-index="${index}">-</button>
-              <input type="text" class="form-control text-center qty" value="${item.quantity}" data-index="${index}">
-              <button class="btn btn-plus" data-index="${index}">+</button>
-            </div>
-          </td>
-          <td class="total-price">Rp${(item.price * item.quantity).toLocaleString()}</td>
-          <td><button class="btn btn-outline-danger btn-sm remove-item" data-index="${index}">🗑 Hapus</button></td>
-        `;
-        cartItemsContainer.appendChild(row);
-      });
-
-      updateCartBadge();
-      updateTotal();
-      attachEventListeners();
-    }
-
-    function updateCartBadge() {
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cart-badge');
-      if (badge) {
-        badge.textContent = totalItems;
-      }
-    }
-
-    function attachEventListeners() {
-      // Quantity buttons
-      document.querySelectorAll('.btn-plus').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const index = parseInt(this.dataset.index);
-          cart[index].quantity += 1;
-          localStorage.setItem('cart', JSON.stringify(cart));
-          loadCart();
-        });
-      });
-
-      document.querySelectorAll('.btn-minus').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const index = parseInt(this.dataset.index);
-          if (cart[index].quantity > 1) {
-            cart[index].quantity -= 1;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
-          }
-        });
-      });
-
-      // Remove item
-      document.querySelectorAll('.remove-item').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const index = parseInt(this.dataset.index);
-          cart.splice(index, 1);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          loadCart();
-        });
-      });
-
-      // Checkbox selection
-      document.querySelectorAll('.check-item').forEach(cb => {
-        cb.addEventListener('change', function() {
-          const index = parseInt(this.dataset.index);
-          if (this.checked) {
-            selectedItems.push(index);
-          } else {
-            selectedItems = selectedItems.filter(i => i !== index);
-          }
-          updateTotal();
-        });
-      });
-    }
-
-    function updateTotal() {
-      let total = 0;
-      selectedItems.forEach(index => {
-        if (cart[index]) {
-          total += cart[index].price * cart[index].quantity;
-        }
-      });
-      document.querySelector('.footer strong').textContent = `Total Bayar: Rp${total.toLocaleString()}`;
-    }
-
-    // Select all checkbox
-    const checkAll = document.getElementById('checkAll');
-    checkAll.addEventListener('change', () => {
-      const items = document.querySelectorAll('.check-item');
-      selectedItems = [];
-      items.forEach((cb, index) => {
-        cb.checked = checkAll.checked;
-        if (checkAll.checked) {
-          selectedItems.push(index);
-        }
-      });
-      updateTotal();
-    });
-
-    loadCart();
-  });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-container {
+    width: 400px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0,255,255,0.2);
+    color: #fff;
+}
+
+.cart-title {
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.08);
+    transition: 0.3s;
+}
+
+.cart-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0,255,255,0.5);
+}
+
+.item-info h3 {
+    font-size: 16px;
+}
+
+.item-info p {
+    font-size: 14px;
+    color: #00ffff;
+}
+
+.item-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty {
+    min-width: 20px;
+    text-align: center;
+}
+
+.qty-btn {
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.qty-btn:hover {
+    background: #00ffff;
+    color: #000;
+}
+
+.delete {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cart-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.checkout {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(90deg, #00ffff, #00bfff);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout:hover {
+    box-shadow: 0 0 20px #00ffff;
+}
+</style>
+
+<script>
+const cartItems = document.querySelectorAll('.cart-item');
+const totalEl = document.getElementById('total');
+
+function updateTotal() {
+    let total = 0;
+
+    cartItems.forEach(item => {
+        if (!item.classList.contains('removed')) {
+            const price = parseInt(item.dataset.price);
+            const qty = parseInt(item.querySelector('.qty').innerText);
+            total += price * qty;
+        }
+    });
+
+    totalEl.innerText = 'Rp ' + total.toLocaleString('id-ID');
+}
+
+cartItems.forEach(item => {
+    const plus = item.querySelector('.plus');
+    const minus = item.querySelector('.minus');
+    const qtyEl = item.querySelector('.qty');
+    const del = item.querySelector('.delete');
+
+    plus.onclick = () => {
+        qtyEl.innerText = parseInt(qtyEl.innerText) + 1;
+        updateTotal();
+    };
+
+    minus.onclick = () => {
+        if (qtyEl.innerText > 1) {
+            qtyEl.innerText = parseInt(qtyEl.innerText) - 1;
+            updateTotal();
+        }
+    };
+
+    del.onclick = () => {
+        item.classList.add('removed');
+        item.style.display = 'none';
+        updateTotal();
+    };
+});
+
+updateTotal();
+</script>

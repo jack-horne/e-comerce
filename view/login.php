@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
             
             <p class="text-center mt-3 mb-0">
-                Belum punya akun? <a href="register.php" class="text-decoration-none">Daftar sekarang</a>
+                Belum punya akun? <a href="view/register.php" class="text-decoration-none">Daftar sekarang</a>
             </p>
         </div>
     </div>
