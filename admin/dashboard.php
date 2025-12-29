@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once __DIR__ . '/../config/app.php';
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,7 +12,7 @@
     <title>Produk - Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../public/css/admin.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/admin.css">
 </head>
 <body>
     <div class="wrapper">
@@ -19,14 +25,13 @@
                 </button>
             </div>
             <nav class="sidebar-nav">
-                <ul class="list-unstyled">
-                    <li><a href="../dashboard.php" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="list.php" class="nav-link active"><i class="fas fa-box"></i> Produk</a></li>
-                    <li><a href="../orders/list.php" class="nav-link"><i class="fas fa-shopping-bag"></i> Pesanan</a></li>
-                    <li><a href="../users/list.php" class="nav-link"><i class="fas fa-users"></i> User</a></li>
-                    <li><a href="../reports/sales.php" class="nav-link"><i class="fas fa-chart-bar"></i> Laporan</a></li>
-                    <li><a href="../settings.php" class="nav-link"><i class="fas fa-cog"></i> Pengaturan</a></li>
-                    <li class="border-top mt-3"><a href="../../backend/auth.php?action=logout" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <ul class="list-unstyleds">
+                    <li><a href="<?= BASE_URL ?>/admin/dashboard.php" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="<?= BASE_URL ?>/admin/products/list.php" class="nav-link"><i class="fas fa-box"></i> Produk</a></li>
+                    <li><a href="<?= BASE_URL ?>/admin/orders/list.php" class="nav-link"><i class="fas fa-shopping-bag"></i> Pesanan</a></li>
+                    <li><a href="<?= BASE_URL ?>/admin/user/list.php" class="nav-link"><i class="fas fa-users"></i> User</a></li>
+                    <li><a href="<?= BASE_URL ?>/admin/reports/sales.php" class="nav-link"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+                    <li class="border-top mt-3"><a href="<?= BASE_URL ?>/view/logout.php" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
         </aside>

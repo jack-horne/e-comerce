@@ -1,0 +1,183 @@
+/* =====================
+   GLOBAL
+===================== */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: #f5f7fb;
+    color: #1f2937;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+.sidebar {
+    width: 240px;
+    background-color: #1f2937;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1040;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-nav {
+    padding: 1rem 0;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #d1d5db;
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 4px 12px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link i {
+    width: 18px;
+    text-align: center;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #374151;
+    color: #fff;
+}
+
+.sidebar .nav-link.active {
+    background-color: #2563eb;
+    color: #fff;
+}
+
+/* Mobile Sidebar */
+@media (max-width: 991px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+}
+
+/* Overlay */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 1030;
+    display: none;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* =====================
+   MAIN CONTENT
+===================== */
+.main-content {
+    margin-left: 240px;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* =====================
+   NAVBAR TOP
+===================== */
+.navbar {
+    height: 64px;
+}
+
+.navbar h4 {
+    font-weight: 600;
+}
+
+/* =====================
+   CARD
+===================== */
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 20px;
+}
+
+.card-header h5 {
+    font-weight: 600;
+}
+
+/* =====================
+   TABLE
+===================== */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #374151;
+}
+
+.table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* =====================
+   BUTTON
+===================== */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border: none;
+}
+
+.btn-warning {
+    color: #000;
+}
+
+.btn-danger {
+    border: none;
+}
+
+/* =====================
+   BADGE
+===================== */
+.badge {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+/* =====================
+   ACTION BUTTON SPACING
+===================== */
+.table td .btn {
+    margin-right: 4px;
+}
