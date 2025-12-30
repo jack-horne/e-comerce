@@ -58,7 +58,7 @@
 
         <!-- CART ICON -->
         <li class="nav-item position-relative">
-          <a class="nav-link nav-icon" href="C:\laragon\www\e-comerce\view\template\chart.php">
+          <a class="nav-link nav-icon" href="view\template\chart.php">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
           </a>
