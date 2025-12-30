@@ -774,3 +774,61 @@ html {
     transform: translateY(-2px);
     box-shadow: 0 15px 35px rgba(13, 110, 253, 0.4);
 }
+
+.btn-action-group {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn-beli-custom {
+    flex: 1; /* Biar tombol beli lebih lebar */
+    background: linear-gradient(to right, #0082e6, #024fa0);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-keranjang-custom {
+    background: transparent;
+    border: 1px solid #00caff;
+    color: #00caff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* TAMPILAN HARGA HORIZONTAL TAPI KEREN */
+.price-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline; /* Biar teks sejajar di bawah teksnya */
+    gap: 10px; /* Jarak antara harga lama dan baru */
+    margin: 10px 0;
+    flex-wrap: wrap; /* Supaya kalau layar sempit otomatis turun sendiri */
+}
+
+.price-old {
+    color: #ff4d4d !important; /* Warna merah agar terlihat 'dikurangi' */
+    text-decoration: line-through;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.price-new {
+    color: #00ffcc !important; /* Warna hijau neon/cyan menyala */
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.4); /* Efek glow */
+}
+
+/* Tambahan: Efek saat kartu di hover */
+.product-card:hover .price-new {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px #00caff;
+    transition: 0.3s;
+}
