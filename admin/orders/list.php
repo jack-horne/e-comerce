@@ -1,6 +1,6 @@
 <?php
 // Gunakan require_once dan pastikan path app.php benar
-require_once __DIR__ . '/../../config/app.php';
+
 require_once __DIR__ . '/../../backend/connection.php';
 
 // Pagination & Filter (Logika tetap sama)

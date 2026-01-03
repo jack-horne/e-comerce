@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../config/base.php';
 require_once __DIR__ . '/../../backend/connection.php';
 
 $id = $_GET['id'];

@@ -33,15 +33,20 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 
-    <?php include 'template/navbar.php'; ?>
+    
 
     <div class="container-fluid px-4 py-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../index.php" class="text-info text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active text-white"><?php echo htmlspecialchars($nama_kategori); ?></li>
-            </ol>
-        </nav>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../index.php" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+            </a>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="../index.php" class="text-info text-decoration-none">Home</a></li>
+                    <li class="breadcrumb-item active text-white"><?php echo htmlspecialchars($nama_kategori); ?></li>
+                </ol>
+            </nav>
+        </div>
     </div>
 
     <div class="container-fluid px-4 mb-5">
@@ -108,11 +113,34 @@ $result = mysqli_query($conn, $query);
 
     <script>
         function addToCart(id, name, price, image) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ id, name, price, image, quantity: 1 });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Berhasil ditambah ke keranjang!');
+            fetch('../backend/add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'product_id=' + id + '&quantity=1'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Produk berhasil ditambahkan ke keranjang!');
+                    // Update cart badge if exists
+                    updateCartBadge();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menambahkan ke keranjang');
+            });
         }
+
+        function updateCartBadge() {
+            // You can implement cart count fetching from server here
+            // For now, just refresh the page or update local counter
+        }
+
         function beliProduk(id) { window.location.href = `product_detail.php?id=${id}`; }
     </script>
 </body>

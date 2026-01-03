@@ -61,41 +61,149 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Futuristic Login</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Orbitron',sans-serif;
+    overflow:hidden;
+}
+body::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#00f2ff,transparent 70%);
+    filter:blur(120px);
+    animation:float 6s infinite alternate;
+}
+@keyframes float{
+    from{transform:translate(-100px,-50px);}
+    to{transform:translate(150px,100px);}
+}
+.login-card{
+    width:380px;
+    padding:2.5rem;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    box-shadow:0 0 30px rgba(0,255,255,0.25);
+    color:#fff;
+    z-index:1;
+}
+.login-card h3{
+    text-align:center;
+    margin-bottom:1.8rem;
+    letter-spacing:2px;
+    color:#00f2ff;
+}
+.form-control{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    border-radius:10px;
+}
+.form-control:focus{
+    background:transparent;
+    border-color:#00f2ff;
+    box-shadow:0 0 10px rgba(0,242,255,0.6);
+    color:#fff;
+}
+.password-wrapper{
+    position:relative;
+}
+
+
+.btn-login{
+    background:linear-gradient(135deg,#00f2ff,#0066ff);
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    font-weight:600;
+    letter-spacing:1px;
+    color:#000;
+    transition:0.3s;
+    position:relative;
+}
+.btn-login.loading{
+    pointer-events:none;
+    background:#444;
+    color:#fff;
+}
+.btn-login .spinner{
+    display:none;
+}
+.btn-login.loading .spinner{
+    display:inline-block;
+}
+.btn-login.loading span{
+    display:none;
+}
+.register-link{
+    text-align:center;
+    margin-top:1.2rem;
+    font-size:.85rem;
+}
+.register-link a{
+    color:#00f2ff;
+    text-decoration:none;
+}
+</style>
 </head>
-<body class="bg-light">
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card shadow p-4" style="width: 25rem; border-radius: 1rem;">
-            <h3 class="text-center mb-4">Login</h3>
-            
-            <?php 
-                // Jika Anda ingin menampilkan error di body, bukan alert:
-                // if(isset($_GET['error'])) {
-                //     echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_GET['error']) . '</div>';
-                // }
-            ?>
+<body>
 
-            <form action="login.php" method="POST">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-            
-            <p class="text-center mt-3 mb-0">
-                Belum punya akun? <a href="view/register.php" class="text-decoration-none">Daftar sekarang</a>
-            </p>
+<div class="position-absolute top-0 start-0 p-3">
+    <a href="../index.php" class="btn btn-outline-secondary btn-sm">
+        <i class="fas fa-arrow-left me-1"></i> Kembali ke Beranda
+    </a>
+</div>
+
+<div class="login-card">
+    <h3>LOGIN</h3>
+
+    <form action="login.php" method="POST" onsubmit="showLoading()">
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" required>
         </div>
+
+        <div class="mb-3 password-wrapper">
+            <label>Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+            
+        </div>
+
+        <button type="submit" class="btn btn-login w-100" id="loginBtn">
+            <span>LOGIN</span>
+            <span class="spinner spinner-border spinner-border-sm"></span>
+        </button>
+    </form>
+
+    <div class="register-link">
+        Belum punya akun? <a href="register.php">Daftar Sekarang</a>
     </div>
+</div>
+
+<script>
+
+
+function showLoading(){
+    const btn=document.getElementById("loginBtn");
+    btn.classList.add("loading");
+}
+</script>
 
 </body>
 </html>

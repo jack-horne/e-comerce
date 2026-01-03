@@ -164,7 +164,7 @@ $result_cooling = mysqli_query($conn, $query_cooling);
 </head>
 <body>
 
-    <?php include 'template/navbar.php'; ?>
+    
 
     <div class="pc-builder-container">
         <h1 class="text-center mb-4" style="color: #00caff; text-shadow: 0 0 15px #00caff;">

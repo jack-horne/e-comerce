@@ -1,131 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Tentang kami</title>
+<meta charset="UTF-8">
+<title>About Us | Futuristic Gaming</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://kit.fontawesome.com/02e480ab6c.js" crossorigin="anonymous"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/02e480ab6c.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="C:\laragon\www\e-comerce\public\css\style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<style>
+body{
+    background: radial-gradient(circle at top, #0f2027, #000);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about-us{
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+/* Title */
+.about-us h1{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    text-shadow: 0 0 20px #00f6ff;
+    margin-bottom: 4rem;
+}
+
+/* Glass Card */
+.glass-card{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 0 30px rgba(0,255,255,.2);
+    transition: 0.4s;
+}
+
+.glass-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px rgba(0,255,255,.6);
+}
+
+/* Avatar */
+.avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border: 3px solid #00fff0;
+    box-shadow: 0 0 25px #00fff0;
+    margin-bottom: 1.5rem;
+}
+
+/* Name */
+.dev-name{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color:#00fff0;
+    text-shadow: 0 0 10px #00fff0;
+}
+
+/* Description */
+.dev-desc{
+    margin-top:1.5rem;
+    font-size:1rem;
+    color:#dcdcdc;
+}
+
+/* About Channel */
+.about-channel{
+    margin-top:6rem;
+}
+
+.about-channel h2{
+    font-family: 'Orbitron', sans-serif;
+    color:#ff00ff;
+    text-shadow: 0 0 15px #ff00ff;
+}
+
+.about-channel p{
+    max-width:800px;
+    margin:auto;
+    margin-top:2rem;
+}
+
+/* Tech Icons */
+.tech-icons{
+    margin-top:4rem;
+}
+
+.tech-icons i{
+    font-size:4rem;
+    margin:0 1.5rem;
+    transition:0.3s;
+}
+
+.tech-icons i:hover{
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 20px currentColor);
+}
+
+/* Carousel Control */
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    filter: invert(1);
+}
+</style>
 </head>
+
 <body>
 
-    <div class="about-us">
-        <h1 style="font-family: 'Ubuntu', sans-serif;">About us</h1>
-        <div id="carousel-about-us" class="carousel slide" data-ride="carousel" data-interval="6000">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="images\Helican_Explanations.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 class="manikanta-docs" style="font-family: 'Ubuntu', sans-serif;">Muhammad Miftakhul Faizin </h2> <!-- nama -->
-              <p class="manikanta-docs" style="font-family: 'Montserrat', sans-serif;"> <br> </p><br>
-              
-            </div>
-            <div class="carousel-item">
-              <img src="images\Hell ound pic.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="blackpantherp7-docs">Muhammad Irfan Dzakir</h2>
-              <p class="blackpantherp7-docs" style="font-family: 'Montserrat', sans-serif;">Hey all the subs of Helican Explanations! This is Blackpantherp7 here, Here is a little bit about me: I am an intermediate developer, I'm just going to become 15 years, at the time of publishing I am working on making a toDo list using EJS and node.js.
-                I am one of the people who contributed in making this website to welcome all the subscribers of the channel. Look forward to lots of great and interesting content in the coming videos of the channel. And.. dont get scared by the profile-pic, I am actually quite nice :D. <br>
-                Wait a few seconds to see what the other devs have to say!</p>
-            </div>
-            <div class="carousel-item">
-              <img src="images\Intersted-coder-profilepic.png" height="150" width="150" style="border-radius: 100%;" alt="">
-              <h2 style="font-family: 'Ubuntu', sans-serif;" class="hemagna-docs">Saif Maajid Mubarak</h2>
-              <p class="hemagna-docs" style="font-family: 'Montserrat', sans-serif;">Hey guys! Hemagna Here, I am an intermediate website and app developer, and I am currently working on a project for one of school asignments :P . I'm one of the developers who helped the others in this website. I think I'm pretty good at HTML, CSS, JS, Maniuplating(JSON), python and scratch. Stay tuned to this channel and expect some great content! <br> Wait a few seconds to know more about the other developers</p>
-            </div>
-            
-          </div>
-          <a class="carousel-control-prev" href="#carousel-about-us" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-about-us" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+<div class="container-fluid px-4 py-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="../../index.php" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+        </a>
+    </div>
+</div>
 
-        <div class="about-the-channel">
-          <h1 style="font-family: 'Ubuntu', sans-serif; padding-bottom: 3rem;">About this channel</h1>
-          <p style="font-family: 'Montserrat', sans-serif;">This channel is enough to give a rocket launching boost to your coding career or hobby. Starting from the basics of HTML, CSS, JS and DOM and working towards dataBases like MongoDB and SQL. Also teaching backend languages like Python from the basics to advanced. Look forward to exiting projects like ticTacToe(Python), a newsletter using mailChimp, your own weather forecast app, and more! You even get to make your own fully functional blog website. Soo.. You get the idea, stick around and subscribe to <a class="helican-explanation" href="https://youtu.be/znbZWjDfW4w">Helican Explanations</a> and expect lots of programming fun!</p>
-        </div>
-        <a class="icon" href="https://www.youtube.com/watch?v=pb547yQDFLA"><i class="fab fa-python fa-5x fa-cog" style="color:rgb(181, 99, 248); padding-top: 3rem;"></i></a>
-        <a class="icon" href="https://youtu.be/znbZWjDfW4w"><i class="fab fa-html5 fa-5x fa-cog" style="color:rgb(255, 92, 92); margin-left: 3rem; padding-top: 3rem;"></i></a>
-        <a class="icon" href="comingSoon.html"><i class="fab fa-js-square fa-5x fa-cog" style="color: rgb(243, 255, 82); margin-left: 3rem; padding-top: 3rem;"></i></a>
-      </div>
+<div class="about-us container">
+
+<h1>ABOUT THE TEAM</h1>
+
+<div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div class="carousel-inner">
+
+<!-- Member 1 -->
+<div class="carousel-item active">
+<div class="glass-card">
+<img src="download (1)-min.jpg" class="avatar">
+<h2 class="dev-name">Muhammad Miftakhul Faizin</h2>
+<p class="dev-desc">
+Frontend & UI Designer. Fokus pada tampilan futuristik, UX modern, dan desain ala gaming PC.
+</p>
+</div>
+</div>
+
+<!-- Member 2 -->
+<div class="carousel-item">
+<div class="glass-card">
+<img src="images/Hell_ound_pic.png" class="avatar">
+<h2 class="dev-name">Muhammad Irfan Dzakir</h2>
+<p class="dev-desc">
+Backend Developer & Logic Builder. Node.js, database, dan sistem modular.
+</p>
+</div>
+</div>
+
+<!-- Member 3 -->
+<div class="carousel-item">
+<div class="glass-card">
+<img src="images/Intersted-coder-profilepic.png" class="avatar">
+<h2 class="dev-name">Saif Maajid Mubarak</h2>
+<p class="dev-desc">
+Fullstack Developer. HTML, CSS, JS, Python, dan pengembangan aplikasi modern.
+</p>
+</div>
+</div>
+
+</div>
+
+<a class="carousel-control-prev" href="#teamCarousel" data-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</a>
+<a class="carousel-control-next" href="#teamCarousel" data-slide="next">
+<span class="carousel-control-next-icon"></span>
+</a>
+
+</div>
+
+<!-- ABOUT CHANNEL -->
+<div class="about-channel">
+<h2>ABOUT THIS PROJECT</h2>
+<p>
+Project ini dibuat dengan nuansa <b>gaming & PC enthusiast</b>, menggabungkan desain futuristik,
+RGB glow, dan teknologi modern untuk memberikan pengalaman visual seperti setup PC high-end.
+</p>
+</div>
+
+<!-- TECH ICONS -->
+<div class="tech-icons">
+<i class="fab fa-html5" style="color:#ff4c4c"></i>
+<i class="fab fa-css3-alt" style="color:#00bfff"></i>
+<i class="fab fa-js-square" style="color:#f7ff00"></i>
+<i class="fab fa-python" style="color:#b366ff"></i>
+<i class="fas fa-microchip" style="color:#00fff0"></i>
+</div>
+
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
-
-<style>
-.about-us {
-  padding-top: 5rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 5rem;
-  text-align: center;
-  background: radial-gradient(circle at top, #001a2a, #000000 60%);
-  color: white;
-}
-.abt-us-h1 {
-  padding-bottom: 3rem;
-}
-
-p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-}
-
-.blackpantherp7-docs {
-  padding-top: 3rem;
-  margin-right: 13rem;
-  margin-left: 13rem;
-}
-
-.manikanta-docs {
-  padding-top: 3rem;
-  margin-left: 13rem;
-  margin-right: 13rem;
-}
-
-.hemagna-docs {
-  padding-top: 3rem;
-  margin-left: 12rem;
-  margin-right: 12rem;
-}
-
-.franklyn-docs {
-  padding-top: 3rem;
-  margin-left: 13rem;
-  margin-right: 13rem;
-}
-
-.helican-explanation {
-    color: rgb(157, 40, 253);
-}
-
-.helican-explanation:hover {
-    color: rgb(157, 40, 253);
-    text-decoration: underline;
-}
-
-.about-the-channel {
-    padding-top: 6rem;
-    margin-left: 13rem;
-    margin-right: 13rem;
-}
-
-.icon:hover {
-    font-size: 17px;
-}
-
-</style>

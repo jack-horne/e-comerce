@@ -37,7 +37,14 @@ $product = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-    <?php include 'C:\laragon\www\e-comerce\view\template\navbar.php'; ?>
+    
+
+    <!-- Back Button -->
+    <div class="container-fluid px-4 py-3">
+        <a href="../index.php" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+        </a>
+    </div>
 
     <!-- Product Detail Section -->
     <div class="container-fluid px-4 py-5">
@@ -134,24 +141,26 @@ $product = mysqli_fetch_assoc($result);
         }
 
         function addToCart(id, name, price, image) {
-            const product = {
-                id: id,
-                name: name,
-                price: price,
-                image: image,
-                quantity: 1
-            };
-
-            const existingProduct = cart.find(item => item.id === product.id);
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-            } else {
-                cart.push(product);
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartBadge();
-            alert('Produk ditambahkan ke keranjang!');
+            fetch('../backend/add_to_cart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'product_id=' + id + '&quantity=1'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Produk berhasil ditambahkan ke keranjang!');
+                    updateCartBadge();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menambahkan ke keranjang');
+            });
         }
 
         function beliProduk(id) {

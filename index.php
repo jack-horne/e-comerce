@@ -98,7 +98,7 @@ $result_featured = mysqli_query($conn, $query_featured);
 
     <!-- ABOUT SECTION -->
     <section class="about" id="tentang">
-        <div class="subtitle">ABOUT US</div>
+        <div class="subtitle"></div>
         <h1>Pixel Part - Your Gaming Hardware Partner</h1>
         
         <div class="description">
