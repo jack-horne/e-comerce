@@ -28,20 +28,21 @@ $product = mysqli_fetch_assoc($result);
 
 // PROSES MIDTRANS SAAT FORM DISUBMIT
 $snapToken = null; 
-// Proses form jika disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama = mysqli_real_escape_string($conn, $_POST['nama']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $telepon = mysqli_real_escape_string($conn, $_POST['telepon']);
+    $alamat = mysqli_real_escape_string($conn, $_POST['alamat']); // Ambil data alamat dari form
     $quantity = (int)$_POST['quantity'];
-    $total_harga = $quantity * ($product['harga'] * (1 - $product['diskon']/100));
     
-    // Buat Kode Invoice Unik
+    // Hitung harga setelah diskon
+    $harga_satuan = $product['harga'] * (1 - $product['diskon']/100);
+    $total_harga = $quantity * $harga_satuan;
+    
     $kd_invoice = 'INV-' . time();
-    // Gunakan ID User dummy (1) jika belum ada sistem login, atau ambil dari session
     $id_user = 1; 
 
-    // 1. Simpan ke tabel PENJUALAN (Data Utama)
+    // 1. Simpan ke tabel PENJUALAN
     $query_penjualan = "INSERT INTO penjualan (id_user, kd_invoice, total_harga, status_pembayaran) 
                         VALUES (?, ?, ?, 'Pending')";
     $stmt_p = mysqli_prepare($conn, $query_penjualan);
@@ -50,24 +51,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_stmt_execute($stmt_p)) {
         $id_penjualan = mysqli_insert_id($conn);
 
-        // 2. Simpan ke tabel DETAIL_PENJUALAN (Data Produk)
-        // Catatan: Karena di tabel detail_penjualan kamu belum ada kolom id_penjualan, 
-        // pastikan kamu sudah menambahkannya atau sesuaikan query di bawah
+        // 2. Simpan ke tabel DETAIL_PENJUALAN
         $query_detail = "INSERT INTO detail_penjualan (id_produk, harga, qty) VALUES (?, ?, ?)";
         $stmt_d = mysqli_prepare($conn, $query_detail);
-        mysqli_stmt_bind_param($stmt_d, "idi", $product_id, $product['harga'], $quantity);
+        mysqli_stmt_bind_param($stmt_d, "idi", $product_id, $harga_satuan, $quantity);
         mysqli_stmt_execute($stmt_d);
 
-        // 3. Siapkan Parameter Midtrans
+        // 3. Siapkan Parameter Midtrans yang Lebih Lengkap
         $params = [
             'transaction_details' => [
                 'order_id' => $kd_invoice,
                 'gross_amount' => (int)$total_harga,
             ],
+            // MENAMPILKAN DAFTAR BARANG
+            'item_details' => [
+                [
+                    'id' => $product_id,
+                    'price' => (int)$harga_satuan,
+                    'quantity' => $quantity,
+                    'name' => substr($product['nm_produk'], 0, 50), // Midtrans membatasi nama produk 50 karakter
+                ]
+            ],
+            // MENAMPILKAN DETAIL PELANGGAN & ALAMAT
             'customer_details' => [
-                'first_name' => $nama,
-                'email' => $email,
-                'phone' => $telepon,
+                'first_name'    => $nama,
+                'email'         => $email,
+                'phone'         => $telepon,
+                'billing_address' => [
+                    'first_name' => $nama,
+                    'email'      => $email,
+                    'phone'      => $telepon,
+                    'address'    => $alamat,
+                ],
+                'shipping_address' => [
+                    'first_name' => $nama,
+                    'email'      => $email,
+                    'phone'      => $telepon,
+                    'address'    => $alamat,
+                ]
             ],
         ];
 
