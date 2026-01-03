@@ -1,7 +1,6 @@
 <?php
-// Gunakan require_once dan pastikan path app.php benar
 
-require_once __DIR__ . '/../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 // Pagination & Filter (Logika tetap sama)
 $limit = 10;
