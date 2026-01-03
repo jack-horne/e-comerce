@@ -1,6 +1,6 @@
 <?php
-require_once 'config/base.php';
-require_once 'backend/connection.php';
+require_once __DIR__ . '/config/init.php';
+// Halaman index sekarang akan terbuka norm
 
 // Query untuk mengambil data kategori
 $query_kategori = "SELECT id_kategori, nm_kategori FROM kat_produk ORDER BY id_kategori";
