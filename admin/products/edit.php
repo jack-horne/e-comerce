@@ -31,12 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $new_filename = uniqid() . '_' . time() . '.' . $filetype;
         $upload_path = '../../publik/image/product/' . $new_filename;
         
-<<<<<<< HEAD
-        if (move_uploaded_file($_FILES['gambar']['tmp_name'], $upload_path)) {
-            // Hapus gambar lama jika bukan default
-            if ($produk['gambar'] != 'default.png' && file_exists('../../publik/image/product/' . $produk['gambar'])) {
-                unlink('../../publik/image/product/' . $produk['gambar']);
-=======
         if (in_array(strtolower($filetype), $allowed)) {
             // Generate unique filename
             $new_filename = uniqid() . '_' . time() . '.' . $filetype;
@@ -51,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
                 $gambar_name = $new_filename;
->>>>>>> 9f0263872710e2f3a5bf89c50afadc404ef98824
             }
             $gambar_name = $new_filename;
         }
@@ -109,11 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
-<<<<<<< HEAD
-                                    <label class="form-label">Gambar Saat Ini</label><br>
-                                    <img src="../../publik/image/product/<?= $produk['gambar']; ?>" class="current-image">
-                                    <input type="file" name="gambar" class="form-control" accept="image/*">
-=======
                                     <label class="form-label">Gambar Saat Ini</label>
                                     <br>
                                     <?php if (!empty($produk['gambar'])): ?>
@@ -123,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <?php else: ?>
                                         <p class="text-muted">Tidak ada gambar</p>
                                     <?php endif; ?>
->>>>>>> 9f0263872710e2f3a5bf89c50afadc404ef98824
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Deskripsi</label>
