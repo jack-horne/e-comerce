@@ -1,12 +1,11 @@
 <?php
 require_once __DIR__ . '/config/init.php';
-// Halaman index sekarang akan terbuka norm
 
 // Query untuk mengambil data kategori
 $query_kategori = "SELECT id_kategori, nm_kategori FROM kat_produk ORDER BY id_kategori";
 $result_kategori = mysqli_query($conn, $query_kategori);
 
-// Query untuk mengambil featured products (misalnya 3 produk terbaru)
+// Query untuk mengambil featured products 
 $query_featured = "SELECT p.*, k.nm_kategori
                    FROM produk p
                    LEFT JOIN kat_produk k ON p.id_kategori = k.id_kategori
