@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 if (!isset($_GET['id'])) { header("Location: list.php"); exit(); }
 $id_produk = (int)$_GET['id'];

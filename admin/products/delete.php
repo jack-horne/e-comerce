@@ -7,7 +7,7 @@ session_start();
 //     exit();
 // }
 
-require_once '../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 // Cek apakah ada ID produk
 if (!isset($_GET['id']) || empty($_GET['id'])) {

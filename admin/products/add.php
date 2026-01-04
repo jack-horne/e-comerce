@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 // Ambil data kategori
 $kategori_query = "SELECT * FROM kat_produk ORDER BY nm_kategori";
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <?php include '../navbar-admin.php'; ?>
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"><?php include '../sidebar-admin.php'; ?></div>
