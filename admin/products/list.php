@@ -1,4 +1,8 @@
 <?php
+/** * @var mysqli $conn
+ * @method string base_url(string $path = '')
+ */
+
 session_start();
 
 //hapus stringnya jika sudah pny akun admin 
@@ -9,14 +13,15 @@ session_start();
 //    exit();
 //}
 
-require_once '../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 // Pagination
 $limit = 10;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-// Search & Filter
+
+// Gunakan $conn yang berasal dari init.php -> base.php
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $kategori_filter = isset($_GET['kategori']) ? (int)$_GET['kategori'] : 0;
 
@@ -113,7 +118,6 @@ if (isset($_GET['error'])) {
     </style>
 </head>
 <body>
-   
     
     <div class="container-fluid">
         <div class="row">
@@ -131,7 +135,6 @@ if (isset($_GET['error'])) {
 
                 <?php echo $message; ?>
 
-                <!-- Filter & Search -->
                 <div class="card mb-3">
                     <div class="card-body">
                         <form method="GET" class="row g-3">
@@ -163,7 +166,6 @@ if (isset($_GET['error'])) {
                     </div>
                 </div>
 
-                <!-- Tabel Produk -->
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -267,7 +269,6 @@ if (isset($_GET['error'])) {
                             </table>
                         </div>
 
-                        <!-- Pagination -->
                         <?php if ($total_pages > 1): ?>
                             <nav>
                                 <ul class="pagination justify-content-center mt-3">
