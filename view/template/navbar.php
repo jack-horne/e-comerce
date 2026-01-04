@@ -1,8 +1,3 @@
-<?php
-if (!defined('BASE_URL')) {
-    define('BASE_URL', '');
-}
-?>
 
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container">
@@ -37,7 +32,7 @@ if (!defined('BASE_URL')) {
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= BASE_URL ?>/view/about.php">
+          <a class="nav-link" href="<?= BASE_URL ?>/view/template/about.php">
             <i class="fa-solid fa-address-card"></i> Tentang Kami
           </a>
         </li>
@@ -51,7 +46,7 @@ if (!defined('BASE_URL')) {
         </li>
 
         <li class="nav-item position-relative">
-          <a class="nav-link nav-icon" href="<?= BASE_URL ?>/view/cart.php">
+          <a class="nav-link nav-icon" href="<?= BASE_URL ?>/view/template/chart.php">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
           </a>
@@ -81,7 +76,7 @@ if (!defined('BASE_URL')) {
                 <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/login.php">
                   <i class="fa-solid fa-right-to-bracket me-2"></i>Masuk
                 </a></li>
-                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/register.php">
+                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/template/register.php">
                   <i class="fa-solid fa-user-plus me-2"></i>Daftar
                 </a></li>
             <?php endif; ?>
@@ -113,3 +108,139 @@ if (!defined('BASE_URL')) {
     </div>
   </div>
 </div>
+
+<style>
+/* BACKGROUND + BLUR */
+.custom-navbar {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    top: 0;
+}
+
+/* LOGO */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff !important;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    filter: brightness(1.2);
+}
+
+/* NAV LINKS */
+.navbar-nav .nav-link {
+    color: #ccc !important;
+    margin-left: 15px;
+    font-size: 15px;
+    transition: 0.3s;
+    padding: 8px 12px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 8px #ff4a4a;
+}
+
+/* NAV ICONS */
+.nav-link.nav-icon {
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+/* DIVIDER */
+.nav-divider {
+    width: 1px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 10px;
+}
+
+/* DROPDOWN */
+.dropdown-menu-dark {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu-dark .dropdown-item {
+    padding: 10px 20px;
+    transition: 0.2s;
+}
+
+.dropdown-menu-dark .dropdown-item:hover {
+    background: #e84343;
+    color: white;
+    padding-left: 25px;
+}
+
+/* CART BADGE */
+.navbar-nav .badge {
+    font-size: 10px;
+    padding: 3px 6px;
+    min-width: 18px;
+}
+
+/* TOGGLER (Mobile) */
+.navbar-toggler {
+    border: none;
+    font-size: 24px;
+    color: #fff;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* SEARCH MODAL */
+.modal-content.bg-dark {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.modal-content .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #e84343;
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(232, 67, 67, 0.25);
+}
+
+.modal-content .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .navbar-nav {
+        padding: 15px 0;
+    }
+
+    .navbar-nav .nav-link {
+        margin-left: 0;
+        padding: 10px 15px;
+    }
+
+    .nav-divider {
+        display: none !important;
+    }
+
+    .dropdown-menu-end {
+        right: auto !important;
+    }
+}
+</style>

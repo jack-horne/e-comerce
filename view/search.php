@@ -1,24 +1,25 @@
 <?php
-require_once '../config/init.php';
+require_once __DIR__ . '/../config/init.php';
 
-$id_kategori = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$query = isset($_GET['q']) ? trim($_GET['q']) : '';
 
-$nama_kategori = '';
-if ($id_kategori > 0) {
-    $kat_query = "SELECT nm_kategori FROM kat_produk WHERE id_kategori = $id_kategori";
-    $kat_result = mysqli_query($conn, $kat_query);
-    if ($kat_result && mysqli_num_rows($kat_result) > 0) {
-        $nama_kategori = mysqli_fetch_assoc($kat_result)['nm_kategori'];
-    }
+if (empty($query)) {
+    header('Location: ' . BASE_URL . '/index.php');
+    exit;
 }
 
-$query = "SELECT p.*, k.nm_kategori
-          FROM produk p
-          LEFT JOIN kat_produk k ON p.id_kategori = k.id_kategori
-          WHERE p.id_kategori = $id_kategori AND p.kodisi = 1
-          ORDER BY p.id_produk DESC";
+// Query untuk mencari produk berdasarkan nama
+$search_query = "SELECT p.*, k.nm_kategori
+                 FROM produk p
+                 LEFT JOIN kat_produk k ON p.id_kategori = k.id_kategori
+                 WHERE p.kodisi = 1 AND (p.nm_produk LIKE ? OR k.nm_kategori LIKE ?)
+                 ORDER BY p.id_produk DESC";
 
-$result = mysqli_query($conn, $query);
+$stmt = mysqli_prepare($conn, $search_query);
+$search_term = '%' . $query . '%';
+mysqli_stmt_bind_param($stmt, 'ss', $search_term, $search_term);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 ?>
 
 <!DOCTYPE html>
@@ -26,14 +27,14 @@ $result = mysqli_query($conn, $query);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo htmlspecialchars($nama_kategori); ?> - Pixel Part</title>
+    <title>Hasil Pencarian: <?php echo htmlspecialchars($query); ?> - Pixel Part</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../public/css/style.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
-    
+    <?php include 'template/navbar.php'; ?>
 
     <div class="container-fluid px-4 py-3">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -43,14 +44,14 @@ $result = mysqli_query($conn, $query);
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="../index.php" class="text-info text-decoration-none">Home</a></li>
-                    <li class="breadcrumb-item active text-white"><?php echo htmlspecialchars($nama_kategori); ?></li>
+                    <li class="breadcrumb-item active text-white">Hasil Pencarian: "<?php echo htmlspecialchars($query); ?>"</li>
                 </ol>
             </nav>
         </div>
     </div>
 
     <div class="container-fluid px-4 mb-5">
-        <h2 class="section-title text-start mb-4"><?php echo htmlspecialchars($nama_kategori); ?></h2>
+        <h2 class="section-title text-start mb-4">Hasil Pencarian untuk "<?php echo htmlspecialchars($query); ?>"</h2>
 
         <div class="row g-4">
             <?php if (mysqli_num_rows($result) > 0): ?>
@@ -69,7 +70,7 @@ $result = mysqli_query($conn, $query);
                             <div class="product-info">
                                 <h5 class="product-title"><?php echo htmlspecialchars($row['nm_produk']); ?></h5>
                                 <p class="product-subtitle"><?php echo htmlspecialchars($row['nm_kategori']); ?></p>
-                                
+
                                 <div class="mb-2">
                                     <span class="text-warning small"><i class="fas fa-star"></i> <?php echo number_format($row['rate'] ?? 0, 1); ?></span>
                                 </div>
@@ -84,7 +85,7 @@ $result = mysqli_query($conn, $query);
                                 <div class="price-container">
                                     <?php if ($row['diskon'] > 0): ?>
                                         <span class="price-old">Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></span>
-                                        
+
                                         <span class="price-new">Rp <?php echo number_format($row['harga'] * (1 - $row['diskon']/100), 0, ',', '.'); ?></span>
                                     <?php else: ?>
                                         <span class="price-new">Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></span>
@@ -103,7 +104,8 @@ $result = mysqli_query($conn, $query);
                 <?php endwhile; ?>
             <?php else: ?>
                 <div class="col-12 text-center py-5">
-                    <p class="text-white-50">Belum ada produk untuk kategori ini.</p>
+                    <p class="text-white-50">Tidak ada produk yang ditemukan untuk "<?php echo htmlspecialchars($query); ?>".</p>
+                    <a href="../index.php" class="btn btn-primary">Kembali ke Beranda</a>
                 </div>
             <?php endif; ?>
         </div>
@@ -124,7 +126,6 @@ $result = mysqli_query($conn, $query);
             .then(data => {
                 if (data.success) {
                     alert('Produk berhasil ditambahkan ke keranjang!');
-                    // Update cart badge if exists
                     updateCartBadge();
                 } else {
                     alert('Error: ' + data.message);
@@ -137,11 +138,12 @@ $result = mysqli_query($conn, $query);
         }
 
         function updateCartBadge() {
-            // You can implement cart count fetching from server here
-            // For now, just refresh the page or update local counter
+            // Implement cart count fetching if needed
         }
 
-        function beliProduk(id) { window.location.href = `product_detail.php?id=${id}`; }
+        function beliProduk(id) {
+            window.location.href = `product_detail.php?id=${id}`;
+        }
     </script>
 </body>
 </html>

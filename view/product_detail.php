@@ -1,5 +1,5 @@
 <?php
-require_once '../backend/connection.php';
+require_once '../config/connection.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: ../index.php');

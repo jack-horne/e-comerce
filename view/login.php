@@ -1,7 +1,7 @@
 <?php
 // 1. Logika PHP HARUS diletakkan di bagian paling atas
 session_start();
-include '../backend/connection.php'; // file koneksi 
+include '../config/connection.php'; // file koneksi 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     

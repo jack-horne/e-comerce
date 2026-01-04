@@ -1,5 +1,5 @@
 <?php
-require_once '../backend/connection.php';
+require_once '../config/init.php';
 
 // Query untuk mengambil komponen berdasarkan kategori
 $query_cpu = "SELECT id_produk, nm_produk, harga FROM produk WHERE id_kategori = (SELECT id_kategori FROM kat_produk WHERE nm_kategori = 'Processor') AND kodisi = 1 ORDER BY harga";
