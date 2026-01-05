@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../backend/connection.php';
+require_once __DIR__ . "/../../config/init.php";
 
 // Ambil data kategori
 $kategori_query = "SELECT * FROM kat_produk ORDER BY nm_kategori";
