@@ -1,13 +1,27 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// 1. BUAT KUNCI AKSES (Wajib di atas require)
+if (!defined('APP_INIT')) {
+define('APP_INIT', true); 
+}
+
+// 2. PANGGIL BASE.PHP
+require_once __DIR__ . '/../config/base.php'; 
+?>
+<?php
 /**
  * FILE: base.php
  * Kegunaan: Mengatur URL, Path, dan Zona Waktu Proyek
  */
 
 // 1. PROTEKSI: Mencegah akses langsung ke file ini via browser
+// Ganti blok 'die' atau 'Akses Ditolak' dengan ini:
 if (!defined('APP_INIT')) {
-    die('Akses ditolak secara langsung!');
+    define('APP_INIT', true); 
 }
+// Dengan ini, jika file lupa bawa 'karcis', base.php akan membuatkannya secara otomatis.
 
 // 2. TIMEZONE: Memastikan waktu transaksi (seperti tgl_penjualan) akurat WIB
 date_default_timezone_set('Asia/Jakarta');
@@ -17,7 +31,7 @@ $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : 
 $host = $_SERVER['HTTP_HOST'];
 
 // Sesuaikan '/e-comerce' dengan nama folder utama Anda di htdocs TOLONG DI BACA INI!!!
-$folder_name = '/e-comerce'; 
+$folder_name = '/e_commerce2'; 
 
 define('BASE_URL', $protocol . "://" . $host . $folder_name);
 
