@@ -1,4 +1,3 @@
-
 <?php
 /** * @var mysqli $conn
  * @method string base_url(string $path = '')
@@ -6,13 +5,12 @@
 
 session_start();
 
-//hapus stringnya jika sudah pny akun admin 
-
-// Cek login admin
-//if (!isset($_SESSION['admin_id'])) {
-//header("Location: ../../index.php");
-//    exit();
-//}
+// Proteksi Admin: Cek apakah session admin_id atau role admin tersedia
+if (!isset($_SESSION['admin_id']) && (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin')) {
+    // Jika tidak login sebagai admin, lempar ke login
+    header("Location: ../../view/login.php");
+    exit();
+}
 
 require_once __DIR__ . "/../../config/init.php";
 

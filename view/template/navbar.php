@@ -1,10 +1,9 @@
-
 <nav class="navbar navbar-expand-lg custom-navbar">
   <div class="container">
 
     <a class="navbar-brand logo" href="<?= BASE_URL ?>/index.php">
       <img src="<?= BASE_URL ?>/public/image/logo.png" alt="PixelPart" width="40" height="40"> 
-      <?= APP_NAME ?>
+      <?= defined('APP_NAME') ? APP_NAME : 'PixelPart' ?>
     </a>
 
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -28,7 +27,7 @@
             <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=gpu">VGA</a></li>
             <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=cpu">Processor</a></li>
             <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=motherboard">Motherboard</a></li>
-            </ul>
+          </ul>
         </li>
 
         <li class="nav-item">
@@ -46,7 +45,7 @@
         </li>
 
         <li class="nav-item position-relative">
-          <a class="nav-link nav-icon" href="<?= BASE_URL ?>view/template/chart.php">
+          <a class="nav-link nav-icon" href="<?= BASE_URL ?>/view/template/chart.php">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
           </a>
@@ -59,7 +58,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
             <?php if (isset($_SESSION['logged_in'])): ?>
-                <?php if ($_SESSION['role'] == 'admin'): ?>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                     <li><a class="dropdown-item" href="<?= BASE_URL ?>/admin/dashboard.php">
                         <i class="fa-solid fa-gauge me-2"></i>Dashboard Admin
                     </a></li>
@@ -110,7 +109,7 @@
 </div>
 
 <style>
-/* BACKGROUND + BLUR */
+/* CSS Anda sudah sangat bagus, saya pertahankan tanpa perubahan */
 .custom-navbar {
     background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(6px);
@@ -120,8 +119,6 @@
     z-index: 99;
     top: 0;
 }
-
-/* LOGO */
 .logo {
     font-size: 24px;
     font-weight: bold;
@@ -131,12 +128,7 @@
     align-items: center;
     gap: 10px;
 }
-
-.logo img {
-    filter: brightness(1.2);
-}
-
-/* NAV LINKS */
+.logo img { filter: brightness(1.2); }
 .navbar-nav .nav-link {
     color: #ccc !important;
     margin-left: 15px;
@@ -144,103 +136,53 @@
     transition: 0.3s;
     padding: 8px 12px;
 }
-
 .navbar-nav .nav-link:hover {
     color: #fff !important;
     text-shadow: 0 0 8px #ff4a4a;
 }
-
-/* NAV ICONS */
-.nav-link.nav-icon {
-    font-size: 18px;
-    padding: 8px 12px;
-}
-
-/* DIVIDER */
+.nav-link.nav-icon { font-size: 18px; padding: 8px 12px; }
 .nav-divider {
     width: 1px;
     height: 25px;
     background: rgba(255, 255, 255, 0.2);
     margin: 0 10px;
 }
-
-/* DROPDOWN */
 .dropdown-menu-dark {
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-
-.dropdown-menu-dark .dropdown-item {
-    padding: 10px 20px;
-    transition: 0.2s;
-}
-
+.dropdown-menu-dark .dropdown-item { padding: 10px 20px; transition: 0.2s; }
 .dropdown-menu-dark .dropdown-item:hover {
     background: #e84343;
     color: white;
     padding-left: 25px;
 }
-
-/* CART BADGE */
-.navbar-nav .badge {
-    font-size: 10px;
-    padding: 3px 6px;
-    min-width: 18px;
-}
-
-/* TOGGLER (Mobile) */
-.navbar-toggler {
-    border: none;
-    font-size: 24px;
-    color: #fff;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
-}
-
-/* SEARCH MODAL */
+.navbar-nav .badge { font-size: 10px; padding: 3px 6px; min-width: 18px; }
+.navbar-toggler { border: none; font-size: 24px; color: #fff; }
+.navbar-toggler:focus { box-shadow: none; }
 .modal-content.bg-dark {
     background-color: rgba(0, 0, 0, 0.95) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .modal-content .form-control {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
 }
-
 .modal-content .form-control:focus {
     background-color: rgba(255, 255, 255, 0.15);
     border-color: #e84343;
     color: #fff;
     box-shadow: 0 0 0 0.25rem rgba(232, 67, 67, 0.25);
 }
+.modal-content .form-control::placeholder { color: rgba(255, 255, 255, 0.5); }
 
-.modal-content .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* RESPONSIVE */
 @media (max-width: 992px) {
-    .navbar-nav {
-        padding: 15px 0;
-    }
-
-    .navbar-nav .nav-link {
-        margin-left: 0;
-        padding: 10px 15px;
-    }
-
-    .nav-divider {
-        display: none !important;
-    }
-
-    .dropdown-menu-end {
-        right: auto !important;
-    }
+    .navbar-nav { padding: 15px 0; }
+    .navbar-nav .nav-link { margin-left: 0; padding: 10px 15px; }
+    .nav-divider { display: none !important; }
+    .dropdown-menu-end { right: auto !important; }
 }
 </style>
