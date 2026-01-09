@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/../../config/app.php';
-require_once __DIR__ . '/../../backend/connection.php';
+define('APP_INIT', true);
+
+require_once __DIR__ . '/../../config/init.php'; 
 
 $search = $_GET['search'] ?? '';
 $query_str = "SELECT * FROM user";

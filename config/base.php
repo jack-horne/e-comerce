@@ -5,5 +5,5 @@ if (!defined('APP_INIT')) {
 }
 
 define('APP_NAME', 'PixelPart'); 
-define('BASE_URL', 'http://localhost/e_commerce2/');
+define('BASE_URL', 'http://localhost/e-comerce/');
 date_default_timezone_set('Asia/Jakarta');

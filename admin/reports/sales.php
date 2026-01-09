@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__ . '/../../config/app.php';
-require_once __DIR__ . '/../../backend/connection.php';
+define('APP_INIT', true);
+
+require_once __DIR__ . '/../../config/init.php'; 
 
 // Filter Tanggal
 $tgl_mulai = $_GET['tgl_mulai'] ?? date('Y-m-01');

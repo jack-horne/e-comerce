@@ -1,6 +1,17 @@
 <?php
+// 1. Berikan kunci akses
+if (!defined('APP_INIT')) {
+    define('APP_INIT', true);
+}
 
-require_once __DIR__ . "/../../config/init.php";
+// 2. Panggil init.php (Mundur 3 tingkat karena file ini ada di admin/orders/)
+$init_path = __DIR__ . "/../../config/init.php";
+
+if (file_exists($init_path)) {
+    require_once $init_path;
+} else {
+    die("Gagal memuat konfigurasi. Jalur salah: " . $init_path);
+}
 
 // Pagination & Filter (Logika tetap sama)
 $limit = 10;
