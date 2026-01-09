@@ -5,7 +5,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) {
     exit();
 }
 
-require_once '../../config/connection.php';
+require_once '../../config/init.php';
 
 // Ambil data user dari database
 $query = "SELECT u.nm_user, u.no_hp, u.email, a.username
