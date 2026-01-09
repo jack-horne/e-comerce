@@ -64,7 +64,7 @@
                     </a></li>
                 <?php endif; ?>
                 
-                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/profile.php">
+                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/template/profile.php">
                     <i class="fa-solid fa-id-card me-2"></i>Profil Saya
                 </a></li>
                 <li><hr class="dropdown-divider border-secondary"></li>
