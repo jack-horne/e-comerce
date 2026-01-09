@@ -56,7 +56,7 @@ $result_featured = mysqli_query($conn, $query_featured);
                     <?php
                     $image_name = strtolower(str_replace(' ', '-', $kategori['nm_kategori']));
                     if ($kategori['nm_kategori'] == 'Cooling') {
-                        $image_name = 'cooling fan';
+                        $image_name = 'cooling-fan';
                     }
                     ?>
                     <img src="public/image/icons/<?php echo $image_name; ?>.jpeg" alt="<?php echo htmlspecialchars($kategori['nm_kategori']); ?>">
