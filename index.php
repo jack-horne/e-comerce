@@ -1,5 +1,12 @@
 <?php
-require_once __DIR__ . '/config/init.php';
+// 1. Kunci akses
+define('APP_INIT', true);
+
+// 2. Panggil init (yang isinya memanggil base.php dan connection.php)
+require_once 'config/init.php'; 
+
+// 3. Baru panggil navbar
+include 'view/template/navbar.php'; 
 
 // Query untuk mengambil data kategori
 $query_kategori = "SELECT id_kategori, nm_kategori FROM kat_produk ORDER BY id_kategori";

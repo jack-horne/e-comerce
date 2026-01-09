@@ -46,7 +46,7 @@
         </li>
 
         <li class="nav-item position-relative">
-          <a class="nav-link nav-icon" href="<?= BASE_URL ?>/view/template/chart.php">
+          <a class="nav-link nav-icon" href="<?= BASE_URL ?>view/template/chart.php">
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
           </a>
@@ -76,7 +76,7 @@
                 <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/login.php">
                   <i class="fa-solid fa-right-to-bracket me-2"></i>Masuk
                 </a></li>
-                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/template/register.php">
+                <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/register.php">
                   <i class="fa-solid fa-user-plus me-2"></i>Daftar
                 </a></li>
             <?php endif; ?>

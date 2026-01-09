@@ -1,7 +1,26 @@
 <?php
-session_start();
-require_once '../../config/connection.php';
+// 1. Berikan kunci akses
+if (!defined('APP_INIT')) {
+    define('APP_INIT', true);
+}
 
+// 2. Panggil init.php (Mundur 3 tingkat: keluar dari products, keluar dari admin, masuk ke config)
+$init_path = __DIR__ . '/../../config/init.php';
+
+if (file_exists($init_path)) {
+    require_once $init_path;
+} else {
+    die("Gagal memuat konfigurasi. Jalur salah: " . $init_path);
+}
+
+// 3. Cek apakah yang akses adalah Admin (Opsional tapi penting)
+// if ($_SESSION['role'] !== 'admin') { 
+//     header('Location: ../../view/login.php'); 
+//     exit; 
+// }
+?>
+
+<?php
 if (!isset($_GET['id'])) { header("Location: list.php"); exit(); }
 $id_produk = (int)$_GET['id'];
 

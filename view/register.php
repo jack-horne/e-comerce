@@ -1,4 +1,14 @@
 <?php
+// 1. Berikan kunci akses
+if (!defined('APP_INIT')) {
+    define('APP_INIT', true);
+}
+
+// 2. Panggil init.php (Naik 1 tingkat karena login.php ada di folder 'view')
+require_once __DIR__ . '/../config/init.php'; 
+?>
+
+<?php
 $error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : '';
 $success = isset($_GET['success']) ? htmlspecialchars($_GET['success']) : '';
 ?>

@@ -1,7 +1,11 @@
 <?php
-// 1. Logika PHP HARUS diletakkan di bagian paling atas
-session_start();
-include '../config/connection.php'; // file koneksi 
+// 1. Berikan kunci akses
+if (!defined('APP_INIT')) {
+    define('APP_INIT', true);
+}
+
+// 2. Panggil init.php (Naik 1 tingkat karena login.php ada di folder 'view')
+require_once __DIR__ . '/../config/init.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
