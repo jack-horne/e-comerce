@@ -1,5 +1,13 @@
 <?php
-require_once '../config/connection.php';
+// 1. Berikan kunci akses
+if (!defined('APP_INIT')) {
+    define('APP_INIT', true);
+}
+
+// 2. Panggil init.php (Mundur 1 tingkat karena file ini ada di folder 'view')
+require_once __DIR__ . '/../config/init.php';
+
+// ... sisa kode detail produk Anda ...
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: ../index.php');
