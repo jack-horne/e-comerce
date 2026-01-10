@@ -17,25 +17,9 @@ require_once __DIR__ . '/../config/base.php';
 <body>
     <div class="wrapper">
         <!-- Sidebar -->
-        <aside class="sidebar bg-dark text-white" id="sidebar">
-            <div class="sidebar-header p-3 border-bottom d-flex justify-content-between align-items-center">
-                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Pixel Part</h5>
-                <button class="btn btn-dark btn-sm d-lg-none" id="closeSidebar">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <nav class="sidebar-nav">
-                <ul class="list-unstyleds">
-                    <li><a href="<?= BASE_URL ?>/admin/dashboard.php" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="<?= BASE_URL ?>/admin/products/list.php" class="nav-link"><i class="fas fa-box"></i> Produk</a></li>
-                    <li><a href="<?= BASE_URL ?>/admin/orders/list.php" class="nav-link"><i class="fas fa-shopping-bag"></i> Pesanan</a></li>
-                    <li><a href="<?= BASE_URL ?>/admin/user/list.php" class="nav-link"><i class="fas fa-users"></i> User</a></li>
-                    <li><a href="<?= BASE_URL ?>/admin/reports/sales.php" class="nav-link"><i class="fas fa-chart-bar"></i> Laporan</a></li>
-                    <li class="border-top mt-3"><a href="<?= BASE_URL ?>/view/logout.php" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                </ul>
-            </nav>
-        </aside>
-
+        <div class="col-md-2 p-0">
+    <?php include 'sidebar-admin.php'; ?>
+</div>
         <!-- Overlay -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
