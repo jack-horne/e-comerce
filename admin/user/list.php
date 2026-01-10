@@ -4,13 +4,27 @@ define('APP_INIT', true);
 require_once __DIR__ . '/../../config/init.php'; 
 
 $search = $_GET['search'] ?? '';
-$query_str = "SELECT * FROM user";
+
+/** * PERBAIKAN UTAMA:
+ * Kita gunakan INNER JOIN untuk menghubungkan tabel 'user' dan tabel 'akun'
+ * agar kolom 'role' bisa terbaca.
+ */
+$query_str = "SELECT u.*, a.role 
+              FROM user u 
+              INNER JOIN akun a ON u.id_user = a.id_user";
+
 if (!empty($search)) {
     $s = mysqli_real_escape_string($conn, $search);
-    $query_str .= " WHERE nm_user LIKE '%$s%' OR email LIKE '%$s%'";
+    $query_str .= " WHERE u.nm_user LIKE '%$s%' OR u.email LIKE '%$s%'";
 }
-$query_str .= " ORDER BY id_user DESC";
+
+$query_str .= " ORDER BY u.id_user DESC";
 $result = mysqli_query($conn, $query_str);
+
+// Cek jika query error
+if (!$result) {
+    die("Query Error: " . mysqli_error($conn));
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -70,10 +84,18 @@ $result = mysqli_query($conn, $query_str);
                             <?php $no = 1; while($user = mysqli_fetch_assoc($result)): ?>
                             <tr>
                                 <td class="ps-4"><?= $no++ ?></td>
-                                <td><img src="<?= defined('BASE_URL') ? BASE_URL : '' ?>/public/image/<?= $user['foto'] ?? 'user-avatar.jpg' ?>" class="user-avatar" onerror="this.src='/e_commerce2/public/image/product/default.png'"></td>
+                                <td>
+                                    <img src="<?= defined('BASE_URL') ? BASE_URL : '' ?>/public/image/<?= !empty($user['foto']) ? $user['foto'] : 'user-avatar.jpg' ?>" 
+                                         class="user-avatar" 
+                                         onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                                </td>
                                 <td class="fw-bold"><?= htmlspecialchars($user['nm_user']) ?></td>
                                 <td><?= htmlspecialchars($user['email']) ?></td>
-                                <td><span class="badge <?= $user['role'] == 'admin' ? 'bg-danger' : 'bg-info text-dark' ?>"><?= ucfirst($user['role']) ?></span></td>
+                                <td>
+                                    <span class="badge <?= ($user['role'] == 'admin') ? 'bg-danger' : 'bg-info text-dark' ?>">
+                                        <?= ucfirst($user['role'] ?? 'user') ?>
+                                    </span>
+                                </td>
                                 <td class="text-center">
                                     <a href="edit.php?id=<?= $user['id_user'] ?>" class="btn btn-sm text-warning"><i class="fas fa-edit"></i></a>
                                     <a href="delete.php?id=<?= $user['id_user'] ?>" class="btn btn-sm text-danger" onclick="return confirm('Hapus user?')"><i class="fas fa-trash"></i></a>
