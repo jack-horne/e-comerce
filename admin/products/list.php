@@ -118,11 +118,9 @@ if (isset($_GET['error'])) {
 </head>
 <body>
     
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <?php include '../sidebar-admin.php'; ?>
-            </div>
+            <div class="container-fluid p-0">  
+                <div class="row g-0"> <div class="col-md-2 p-0"> <?php include '../sidebar-admin.php'; ?>
+                </div>
             
             <div class="col-md-10 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
