@@ -119,8 +119,6 @@ $result_featured = mysqli_query($conn, $query_featured);
             Dengan pengalaman bertahun-tahun dalam industri komponen PC,
             kami berkomitmen untuk memberikan produk terbaik dengan layanan pelanggan yang prima.
         </div>
-
-        <button class="btn">Learn More About Us</button>
     </section>
 
     <!-- CONTACT SECTION -->

@@ -130,7 +130,7 @@ body {
     position: relative;
     z-index: 1000 !important; /* Pastikan ini cukup tinggi */
     pointer-events: auto !important;
-    
+}    
 
 .btn:hover {
     transform: scale(1.05);

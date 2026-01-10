@@ -24,9 +24,13 @@
             <i class="fa-solid fa-box"></i> Kategori
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=gpu">VGA</a></li>
-            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=cpu">Processor</a></li>
-            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/produk.php?cat=motherboard">Motherboard</a></li>
+            <li><a class="dropdown-item" >VGA</a></li>
+            <li><a class="dropdown-item" >Processor</a></li>
+            <li><a class="dropdown-item" >Motherboard</a></li>
+            <li><a class="dropdown-item" >RAM</a></li>
+            <li><a class="dropdown-item" >Storage</a></li>
+            <li><a class="dropdown-item" >Power Supply</a></li>
+            <li><a class="dropdown-item" >Cooling</a></li>
           </ul>
         </li>
 
