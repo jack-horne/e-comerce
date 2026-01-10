@@ -29,15 +29,9 @@
                     <i class="fas fa-chart-bar me-2"></i> Laporan
                 </a>
             </li>
-            <li class="mb-2">
-                <a href="<?= BASE_URL; ?>/admin/settings.php" class="text-white text-decoration-none d-block p-2 rounded hover-menu">
-                    <i class="fas fa-cog me-2"></i> Pengaturan
-                </a>
-            </li>
-            
             <li class="mt-5 border-top pt-3">
-                <a href="<?= BASE_URL; ?>/backend/auth.php?action=logout" class="text-danger text-decoration-none d-block p-2 rounded hover-menu" onclick="return confirm('Yakin ingin keluar?')">
-                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                <a href="<?= BASE_URL; ?>/view/template/logout.php" class="text-danger text-decoration-none d-block p-2 rounded hover-menu" onclick="return confirm('Yakin ingin keluar?')">
+                     <i class="fas fa-sign-out-alt me-2"></i> Logout
                 </a>
             </li>
         </ul>
