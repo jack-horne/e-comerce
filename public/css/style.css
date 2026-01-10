@@ -20,9 +20,9 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 99;
+    z-index: 10000 !important;
     height: 80px !important; /* Paksa tingginya */
-    overflow: hidden; /* Potong jika ada elemen yang keluar jalur */
+    overflow: visible !important; /* Potong jika ada elemen yang keluar jalur */
 }
 
 .navbar-brand {
@@ -95,7 +95,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 1000 !important;;
+    z-index: 2 !important;;
     max-width: 600px;
 }
 
@@ -128,7 +128,7 @@ body {
     transition: 0.2s;
     display: inline-block;
     position: relative;
-    z-index: 1000 !important; /* Pastikan ini cukup tinggi */
+    z-index: 3 !important; /* Pastikan ini cukup tinggi */
     pointer-events: auto !important;
 }    
 
