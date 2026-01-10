@@ -1,9 +1,9 @@
 <?php
-require_once '../../config/init.php';
-require_once '../../backend/midtrans_config.php'; 
+require_once '../config/init.php';
+require_once '../backend/midtrans_config.php'; 
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -20,7 +20,7 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) == 0) {
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
     exit;
 }
 
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Checkout - <?php echo htmlspecialchars($product['nm_produk']); ?> - Pixel Part</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-U2pdocRQG3su3-Dp"></script>
 </head>
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="card-body">
                         <div class="d-flex">
-                            <img src="../../public/image/product/<?php echo htmlspecialchars($product['gambar']); ?>"
+                            <img src="../public/image/product/<?php echo htmlspecialchars($product['gambar']); ?>"
                                  class="img-fluid me-3" style="width: 100px; height: 100px; object-fit: contain;">
                             <div>
                                 <h6><?php echo htmlspecialchars($product['nm_produk']); ?></h6>

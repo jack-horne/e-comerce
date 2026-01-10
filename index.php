@@ -44,7 +44,7 @@ $result_featured = mysqli_query($conn, $query_featured);
         <h1>Asus ROG <br> MAXIMUS Z790 HERO</h1>
         <p>Motherboard terbaik untuk extreme gaming.</p>
         
-        <a href="view/template/order.php" class="btn">
+        <a href="view/order.php?id=9" class="btn">
             Beli Sekarang • Rp 7.125.000
         </a>
     </div>
