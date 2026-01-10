@@ -40,13 +40,16 @@ $result_featured = mysqli_query($conn, $query_featured);
     
     <!-- HERO SECTION -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Asus ROG <br> MAXIMUS IX</h1>
-            <p>Motherboard terbaik untuk extreme gaming.</p>
-            <button class="btn">Beli Sekarang • $499</button>
-        </div>
-        <div class="hero-overlay"></div>
-    </section>
+    <div class="hero-content">
+        <h1>Asus ROG <br> MAXIMUS Z790 HERO</h1>
+        <p>Motherboard terbaik untuk extreme gaming.</p>
+        
+        <a href="view/template/order.php" class="btn">
+            Beli Sekarang • Rp 7.125.000
+        </a>
+    </div>
+    <div class="hero-overlay"></div>
+</section>
 
     <!-- CATEGORY SECTION -->
     <section class="category-section" id="kategori">

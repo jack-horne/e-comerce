@@ -7,11 +7,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) {
 
 require_once '../../config/init.php';
 
-// Ambil data user dari database
-$query = "SELECT u.nm_user, u.no_hp, u.email, a.username
+// Ambil data user dari database (Pastikan u.alamat sudah ada di query)
+$query = "SELECT u.nm_user, u.no_hp, u.email, u.alamat, a.username
           FROM user u
           JOIN akun a ON u.id_user = a.id_user
           WHERE u.id_user = ?";
+
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "i", $_SESSION['id_user']);
 mysqli_stmt_execute($stmt);
@@ -19,20 +20,15 @@ $result = mysqli_stmt_get_result($stmt);
 
 if ($row = mysqli_fetch_assoc($result)) {
     $user = [
-        'username' => $row['username'],
-        'email' => $row['email'],
+        'username'  => $row['username'],
+        'email'     => $row['email'],
         'full_name' => $row['nm_user'],
-        'phone' => $row['no_hp'] ?? '08123456789',
-        'address' => 'Alamat lengkap Anda disini' // Jika ada kolom alamat, tambahkan query
+        'phone'     => $row['no_hp'],
+        'address'   => $row['alamat'] // Sekarang mengambil data asli dari database
     ];
 } else {
-    $user = [
-        'username' => $_SESSION['username'] ?? 'User',
-        'email' => 'user@example.com',
-        'full_name' => 'Nama Lengkap',
-        'phone' => '08123456789',
-        'address' => 'Alamat lengkap Anda disini'
-    ];
+    // Jika data tidak ditemukan di DB, arahkan ke login atau tampilkan error
+    die("Data tidak ditemukan di database. Pastikan ID User benar.");
 }
 ?>
 
@@ -73,7 +69,7 @@ if ($row = mysqli_fetch_assoc($result)) {
                     <label for="address" class="form-label">Alamat</label>
                     <textarea class="form-control" id="address" rows="3" readonly><?php echo htmlspecialchars($user['address']); ?></textarea>
                 </div>
-                <a href="edit_profile.php" class="btn btn-primary">Edit Profil</a>
+                <a href="<?= BASE_URL; ?>view/template/edit_profile.php" class="btn btn-warning"><i class="fas fa-edit"></i> Edit Profil</a>
             </form>
         </div>
     </div>
