@@ -8,7 +8,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== TRUE) {
 require_once '../../config/init.php';
 
 // Ambil data user dari database (Pastikan u.alamat sudah ada di query)
-$query = "SELECT u.nm_user, u.no_hp, u.email, u.alamat, a.username
+$query = "SELECT u.nm_user, u.no_hp, u.email, a.username
           FROM user u
           JOIN akun a ON u.id_user = a.id_user
           WHERE u.id_user = ?";
