@@ -24,7 +24,6 @@ if ($row = mysqli_fetch_assoc($result)) {
         'email'     => $row['email'],
         'full_name' => $row['nm_user'],
         'phone'     => $row['no_hp'],
-        'address'   => $row['alamat'] // Sekarang mengambil data asli dari database
     ];
 } else {
     // Jika data tidak ditemukan di DB, arahkan ke login atau tampilkan error
@@ -64,10 +63,6 @@ if ($row = mysqli_fetch_assoc($result)) {
                 <div class="mb-3">
                     <label for="phone" class="form-label">Nomor Telepon</label>
                     <input type="text" class="form-control" id="phone" value="<?php echo htmlspecialchars($user['phone']); ?>" readonly />
-                </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Alamat</label>
-                    <textarea class="form-control" id="address" rows="3" readonly><?php echo htmlspecialchars($user['address']); ?></textarea>
                 </div>
                 <a href="<?= BASE_URL; ?>view/template/edit_profile.php" class="btn btn-warning"><i class="fas fa-edit"></i> Edit Profil</a>
             </form>

@@ -27,7 +27,6 @@ if (isset($_POST['update'])) {
     $nama = $_POST['nama'];
     $no_hp = $_POST['no_hp'];
     $email = $_POST['email'];
-    $alamat = $_POST['alamat'];
     $username = $_POST['username'];
 
     // 1. Update tabel user
@@ -87,12 +86,6 @@ if (isset($_POST['update'])) {
                         <label class="form-label">Nomor HP</label>
                         <input type="text" name="no_hp" class="form-control" value="<?= htmlspecialchars($user['no_hp']); ?>">
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Alamat Lengkap</label>
-                        <textarea name="alamat" class="form-control" rows="3"><?= htmlspecialchars($user['alamat'] ?? ''); ?></textarea>
-                    </div>
-
                     <div class="d-flex justify-content-between mt-4">
                         <a href="profile.php" class="btn btn-secondary">Batal</a>
                         <button type="submit" name="update" class="btn btn-success px-4">Simpan Perubahan</button>
