@@ -1,4 +1,5 @@
-Kelompok 14 PixelPart (Toko SparePart Komputer)
+Kelompok 14 PixelPart (Toko SparePart Komputer) 
+Link Web pixelpart = https://pixelpart.etshop.id
 
 1. Muhammad Miftakhul Faizin 242502040022
 2. Muhammad Irfan Dzakir 242502040056
